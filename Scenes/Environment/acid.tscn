@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://cj8mmbgqa0lrq"]
+
+[ext_resource type="Shader" uid="uid://bgcav5qdaf381" path="res://Scenes/Environment/water.gdshader" id="1_2iyx0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pobbv"]
+render_priority = 0
+shader = ExtResource("1_2iyx0")
+shader_parameter/out_color = Color(0.109804, 0.870588, 0.352941, 1)
+shader_parameter/amount = 0.2
+shader_parameter/beer_factor = 0.2
+shader_parameter/metallic = 0.2
+shader_parameter/roughness = 0.4
+shader_parameter/specular = 0.5
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_aomj4"]
+lightmap_size_hint = Vector2i(502, 502)
+material = SubResource("ShaderMaterial_pobbv")
+size = Vector2(100, 100)
+subdivide_width = 50
+subdivide_depth = 50
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rscml"]
+size = Vector3(100, 1, 100)
+
+[node name="Acid" type="StaticBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_aomj4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_rscml")

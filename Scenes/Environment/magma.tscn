@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://bu2d2ymp8mdx7"]
+
+[ext_resource type="Shader" uid="uid://cdecvnyoun7ls" path="res://Scenes/Environment/magma.gdshader" id="1_mtb7a"]
+[ext_resource type="Texture2D" uid="uid://d2x48hvm5wswl" path="res://Assets/Environment/magma_texture.png" id="2_7cwqp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7cwqp"]
+render_priority = 0
+shader = ExtResource("1_mtb7a")
+shader_parameter/ColorParameter = Color(0.697227, 0.250703, 0, 1)
+shader_parameter/Falloff = 5.0
+shader_parameter/Noise_Texsture = ExtResource("2_7cwqp")
+shader_parameter/Midtones = 0.4
+shader_parameter/Highlights = 0.05
+shader_parameter/Multiplier = 1.0
+shader_parameter/Aplha = 1.0
+shader_parameter/Roughness = 0.1
+shader_parameter/Emmision_Strength = 1.0
+shader_parameter/Bump_Strength = 0.1
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mv2v3"]
+material = SubResource("ShaderMaterial_7cwqp")
+size = Vector2(10, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7cwqp"]
+size = Vector3(10, 1, 10)
+
+[node name="Magma" type="StaticBody3D"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_mv2v3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_7cwqp")

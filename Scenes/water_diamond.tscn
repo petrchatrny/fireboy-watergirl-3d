@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxmlaaswhjv5x"]
+
+[ext_resource type="PackedScene" uid="uid://bw67cvuivemi" path="res://Assets/diamond.glb" id="1_cbv2l"]
+[ext_resource type="Shader" uid="uid://cy5ttstfxmvxi" path="res://Scenes/diamond.gdshader" id="2_8ei8f"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j63wr"]
+render_priority = 0
+shader = ExtResource("2_8ei8f")
+shader_parameter/albedo_color = Color(0.363729, 0.478253, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xv4yd"]
+size = Vector3(0.515564, 0.514038, 0.612757)
+
+[node name="Diamond" instance=ExtResource("1_cbv2l")]
+
+[node name="group1022280760" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_j63wr")
+
+[node name="Area3D" type="Area3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00546265, -0.0531616, -0.00420475)
+shape = SubResource("BoxShape3D_xv4yd")
