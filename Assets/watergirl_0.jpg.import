@@ -2,25 +2,25 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7kstj1kq2h1c"
-path.bptc="res://.godot/imported/watergirl_0.jpg-2904034cc8554aea5b7a960a122ef675.bptc.ctex"
+uid="uid://cf3rvf3l7jjxg"
+path.s3tc="res://.godot/imported/watergirl_0.jpg-2904034cc8554aea5b7a960a122ef675.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "68da1b5aa61b47a7f6ae7ed82ca614eb"
+"md5": "1b83552fd8ac0a7787e53d8e6bd1af00"
 }
 
 [deps]
 
 source_file="res://Assets/watergirl_0.jpg"
-dest_files=["res://.godot/imported/watergirl_0.jpg-2904034cc8554aea5b7a960a122ef675.bptc.ctex"]
+dest_files=["res://.godot/imported/watergirl_0.jpg-2904034cc8554aea5b7a960a122ef675.s3tc.ctex"]
 
 [params]
 
 compress/mode=2
-compress/high_quality=true
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
