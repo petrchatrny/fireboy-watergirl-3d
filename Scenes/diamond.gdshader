@@ -9,5 +9,5 @@ void fragment() {
     METALLIC = 1.0;
     ROUGHNESS = 0.05;
     SPECULAR = 1.0;
-    ALPHA = 0.6;
+    ALPHA = 0.95;
 }

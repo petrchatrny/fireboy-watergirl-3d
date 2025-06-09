@@ -3,24 +3,24 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cws5c8t3108rd"
-path.s3tc="res://.godot/imported/fireboy_0.jpg-195d57478c67c9b93c553c62077950b5.s3tc.ctex"
+path.bptc="res://.godot/imported/fireboy_0.jpg-195d57478c67c9b93c553c62077950b5.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "3b1bb513cbff5f01c0a6d0a8b32c2642"
+"md5": "cea0a59fdbd35234ea61508ad254383f"
 }
 
 [deps]
 
 source_file="res://Assets/fireboy_0.jpg"
-dest_files=["res://.godot/imported/fireboy_0.jpg-195d57478c67c9b93c553c62077950b5.s3tc.ctex"]
+dest_files=["res://.godot/imported/fireboy_0.jpg-195d57478c67c9b93c553c62077950b5.bptc.ctex"]
 
 [params]
 
 compress/mode=2
-compress/high_quality=false
+compress/high_quality=true
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0

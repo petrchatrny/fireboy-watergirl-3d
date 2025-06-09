@@ -44,7 +44,7 @@ data = PackedVector3Array(1.75, 2.4, 2, -1.75, 2.4, 2, -1.75, 2.5, 1.9, 1.75, 2.
 
 [node name="Stairs" type="StaticBody3D"]
 
-[node name="stairs" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_j5c0f")
 skeleton = NodePath("")
 
