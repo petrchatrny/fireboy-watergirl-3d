@@ -1,10 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://eypjlm3bhk8f"]
+[gd_scene load_steps=17 format=3 uid="uid://d0sf3k4e0oxkr"]
 
 [ext_resource type="PackedScene" uid="uid://bfccdulo15a1q" path="res://Scenes/Environment/wall.tscn" id="1_gnif3"]
-[ext_resource type="Script" uid="uid://b06ge8w53vxcu" path="res://Levels/test.gd" id="1_ovrsl"]
+[ext_resource type="Script" path="res://Levels/test.gd" id="1_ovrsl"]
 [ext_resource type="PackedScene" uid="uid://cd7nxpyvy0j1j" path="res://Scenes/Environment/wall_corner.tscn" id="2_lwy2l"]
 [ext_resource type="PackedScene" uid="uid://bnf8ek5288hyi" path="res://Scenes/fire_diamond.tscn" id="3_lwy2l"]
-[ext_resource type="PackedScene" uid="uid://dxmlaaswhjv5x" path="res://Scenes/water_diamond.tscn" id="4_7pswh"]
+[ext_resource type="PackedScene" uid="uid://tcv1x6gfbx4l" path="res://Scenes/water_diamond.tscn" id="4_7pswh"]
 [ext_resource type="PackedScene" uid="uid://cw1yis6ggn8t2" path="res://Scenes/Environment/stairs.tscn" id="5_34bfm"]
 [ext_resource type="PackedScene" uid="uid://kgtyn5vo7nbx" path="res://Scenes/player.tscn" id="6_34bfm"]
 [ext_resource type="PackedScene" uid="uid://b26fsvh8h0we7" path="res://Scenes/Environment/wall_doorway.tscn" id="9_he5fp"]
@@ -89,3 +89,24 @@ shadow_enabled = true
 
 [node name="WallDoorway" parent="." instance=ExtResource("9_he5fp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.929815, 1, 14.1246)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -50.0
+offset_top = 17.0
+offset_right = 50.0
+offset_bottom = 64.0
+grow_horizontal = 2
+text = "0:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Timer" type="Timer" parent="CanvasLayer"]
+
+[connection signal="timeout" from="CanvasLayer/Timer" to="Fireboy" method="_on_timer_timeout"]
+[connection signal="timeout" from="CanvasLayer/Timer" to="Watergirl" method="_on_timer_timeout"]
