@@ -5,11 +5,17 @@ extends CharacterBody3D
 # ovládání
 @export var controller_id: int = -1  # -1 = klávesnice/myš, 0+ = gamepad ID
 @export var use_mouse: bool = false  # ovládání kamery pomocí myši
+var score: int = 0
+
 var walk_left_action := ""
 var walk_right_action := ""
 var walk_forward_action := ""
 var walk_back_action := ""
 var jump_action := ""
+@export var character_scene: PackedScene = preload("res://Scenes/watergirl_mesh.tscn")
+@onready var label = $"../../../../CanvasLayer/Label"
+@onready var timer = $"../../../../CanvasLayer/Timer"
+@onready var total_time_seconds:int = 0  # 0 minutes
 
 # pohyb
 @export var speed = 5
@@ -28,9 +34,14 @@ const FIREBOY_MESH_PATH := "res://Scenes/fireboy_mesh.tscn"
 var character_mesh: Node3D
 @onready var step_cast = $StepCast
 
+# Vytvoř reference na diamanty
+@onready var fire_diamond = preload("res://Scenes/fire_diamond.tscn")
+@onready var water_diamond = preload("res://Scenes/water_diamond.tscn")
+
 func _ready() -> void:
+	# Start the timer
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	
+	$"../../../../CanvasLayer/Timer".start()
 	# nastavení podle typu hráče
 	var mesh_scene = null
 	if is_watergirl:
@@ -52,6 +63,10 @@ func _ready() -> void:
 	character_mesh = mesh_scene.instantiate()
 	add_child(character_mesh)
 	
+	for body in get_children():
+		if body is Area3D:
+			body.connect("body_entered", Callable(self, "_on_body_entered"))
+
 	# ignorování kolize kamery s vlastním tělem hráče
 	$Head/SpringArm3D.add_excluded_object(get_rid())
 	
@@ -143,6 +158,16 @@ func get_movement_vector() -> Vector2:
 			walk_back_action
 		)
 	
+# Timer callback function
+func _on_timer_timeout() -> void:
+	print(total_time_seconds)
+	total_time_seconds += 1
+	var m = int(total_time_seconds / 60)
+	var s = total_time_seconds - m * 60
+	
+	# Update the label with formatted time
+	label.text = "%02d:%02d" % [m, s]
+
 func is_jumping() -> bool:
 	if controller_id >= 0:
 		return Input.is_joy_button_pressed(controller_id, JOY_BUTTON_A)
@@ -151,3 +176,18 @@ func is_jumping() -> bool:
 		
 func is_grounded() -> bool:
 	return grounded || is_on_floor()
+
+# Funkce pro zpracování kolize s diamantem
+func _on_body_entered(body: Node) -> void:
+	if body is Area3D:
+		print("Body entered: ", body.name)  # Debug: Zobrazí jméno objektu
+		if is_watergirl:
+			# Pokud je to Watergirl a diamant je "water_diamond", znič diamant
+			if body.type == "water":  # Připojeno přes custom property
+				body.queue_free()
+				print("Watergirl picked up the blue diamond!")
+		else:
+			# Pokud je to Fireboy a diamant je "fire_diamond", znič diamant
+			if body.type == "fire":  # Připojeno přes custom property
+				body.queue_free()
+				print("Fireboy picked up the red diamond!")

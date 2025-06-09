@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://d125keqmbamwv"]
+
+[ext_resource type="ArrayMesh" path="res://Assets/fireboy_Mesh.res" id="1_6r3ir"]
+
+[sub_resource type="Skin" id="Skin_6r3ir"]
+
+[node name="fireboy" type="Node3D"]
+
+[node name="RootNode" type="Node3D" parent="."]
+
+[node name="CharacterArmature" type="Node3D" parent="RootNode"]
+
+[node name="Skeleton3D" type="Skeleton3D" parent="RootNode/CharacterArmature"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RootNode/CharacterArmature/Skeleton3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00974202, 0)
+mesh = ExtResource("1_6r3ir")
+skin = SubResource("Skin_6r3ir")
+skeleton = NodePath("")

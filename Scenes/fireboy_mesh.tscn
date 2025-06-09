@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cpgbsymiosu1n"]
 
-[ext_resource type="PackedScene" uid="uid://chw7yg1c1ow0n" path="res://Assets/fireboy.glb" id="1_pk7cf"]
+[ext_resource type="PackedScene" uid="uid://b3t4ry4nrbhxu" path="res://Assets/fireboy.glb" id="1_pk7cf"]
 
 [node name="FireboyMesh" instance=ExtResource("1_pk7cf")]
 transform = Transform3D(90, 0, 0, 0, 90, 0, 0, 0, 90, 0, 0, 0)

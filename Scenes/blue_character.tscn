@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://c6qmmjfd2v8rv"]
+
+[node name="BlueCharacter"]
+
+[node name="Skeleton3D" parent="RootNode/CharacterArmature" index="0"]
+bones/1/rotation = Quaternion(1.17003e-05, 0.705806, 0.708405, 1.20267e-05)
+bones/3/position = Vector3(2.15298e-05, 0.0083747, 0.00167574)
+bones/3/rotation = Quaternion(-3.5527e-15, 1.19209e-07, -2.52435e-29, 1)
+bones/5/rotation = Quaternion(0.166831, 4.319e-07, 1.0312e-07, 0.985986)
+bones/6/rotation = Quaternion(0.0961896, -8.28473e-07, 2.15124e-08, 0.995363)
+bones/7/rotation = Quaternion(0.351925, 9.69401e-07, 1.50234e-07, 0.936028)
+bones/8/rotation = Quaternion(-0.390719, -0.000253907, 0.000107202, 0.92051)
+bones/10/position = Vector3(0.00177194, 0.00254012, -0.000224557)
+bones/10/rotation = Quaternion(-0.134496, -0.0327377, -0.409127, 0.901917)
+bones/11/rotation = Quaternion(0.494622, 0.501845, 0.507197, -0.496238)
+bones/12/rotation = Quaternion(0.0147868, 0.267123, -0.174268, 0.947659)
+bones/28/position = Vector3(-0.00175917, 0.00254012, -0.000224555)
+bones/28/rotation = Quaternion(-0.134496, 0.0327383, 0.409127, 0.901917)
+bones/29/rotation = Quaternion(-0.494622, 0.501845, 0.507198, 0.496237)
+bones/30/rotation = Quaternion(0.0147867, -0.267123, 0.174268, 0.947659)
+bones/41/rotation = Quaternion(-0.0766122, 0.00152706, 0.0198675, 0.996862)
+bones/46/rotation = Quaternion(0.965041, 0.00858456, 0.00207861, 0.26195)
+bones/46/scale = Vector3(0.999976, 0.999984, 0.999932)
+bones/47/rotation = Quaternion(0.517018, 0.0063198, 0.00850598, 0.855909)
+bones/47/scale = Vector3(1.00001, 1.00005, 1)
+bones/49/rotation = Quaternion(0.965041, -0.00858596, -0.00207811, 0.26195)
+bones/49/scale = Vector3(0.999976, 0.999984, 0.999932)
+bones/50/rotation = Quaternion(0.517018, -0.00631982, -0.00850602, 0.855909)
+bones/50/scale = Vector3(1.00001, 1.00005, 1)
+bones/54/rotation = Quaternion(-1.20709e-05, 0.705806, 0.708405, -1.16574e-05)
