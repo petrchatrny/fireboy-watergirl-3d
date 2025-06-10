@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cj2trjv4kqejf"
-path.bptc="res://.godot/imported/wall_corner_small_dungeon_texture.png-e8d75ec3675f5ba9fb26e01360b9e00c.bptc.ctex"
+uid="uid://ddw34qny8swva"
+path.bptc="res://.godot/imported/fireboy_0.jpg-748b6178a638f272b00ae9769d3a2fe3.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "cea0a59fdbd35234ea61508ad254383f"
+}
 
 [deps]
 
-source_file="res://Assets/Environment/wall_corner_small_dungeon_texture.png"
-dest_files=["res://.godot/imported/wall_corner_small_dungeon_texture.png-e8d75ec3675f5ba9fb26e01360b9e00c.bptc.ctex"]
+source_file="res://Assets/Model/fireboy_0.jpg"
+dest_files=["res://.godot/imported/fireboy_0.jpg-748b6178a638f272b00ae9769d3a2fe3.bptc.ctex"]
 
 [params]
 

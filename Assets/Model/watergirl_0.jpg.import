@@ -2,22 +2,25 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b12algyfdm7oo"
-path.bptc="res://.godot/imported/floor_tile_large_dungeon_texture.png-bbfc4309135e1f05936d95522c5420cf.bptc.ctex"
+uid="uid://cf3rvf3l7jjxg"
+path.s3tc="res://.godot/imported/watergirl_0.jpg-a1061d45fa4a2b1c90dc0a51e7df84a3.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "68da1b5aa61b47a7f6ae7ed82ca614eb"
+}
 
 [deps]
 
-source_file="res://Assets/Environment/floor_tile_large_dungeon_texture.png"
-dest_files=["res://.godot/imported/floor_tile_large_dungeon_texture.png-bbfc4309135e1f05936d95522c5420cf.bptc.ctex"]
+source_file="res://Assets/Model/watergirl_0.jpg"
+dest_files=["res://.godot/imported/watergirl_0.jpg-a1061d45fa4a2b1c90dc0a51e7df84a3.s3tc.ctex"]
 
 [params]
 
 compress/mode=2
-compress/high_quality=true
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0

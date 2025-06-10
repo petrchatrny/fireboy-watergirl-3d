@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://d0sf3k4e0oxkr"]
 
 [ext_resource type="PackedScene" uid="uid://bfccdulo15a1q" path="res://Scenes/Environment/wall.tscn" id="1_gnif3"]
-[ext_resource type="Script" path="res://Levels/test.gd" id="1_ovrsl"]
+[ext_resource type="Script" uid="uid://b06ge8w53vxcu" path="res://Levels/test.gd" id="1_ovrsl"]
 [ext_resource type="PackedScene" uid="uid://cd7nxpyvy0j1j" path="res://Scenes/Environment/wall_corner.tscn" id="2_lwy2l"]
 [ext_resource type="PackedScene" uid="uid://bnf8ek5288hyi" path="res://Scenes/fire_diamond.tscn" id="3_lwy2l"]
 [ext_resource type="PackedScene" uid="uid://tcv1x6gfbx4l" path="res://Scenes/water_diamond.tscn" id="4_7pswh"]
@@ -17,21 +17,21 @@ size = Vector3(20, 1, 30)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_hbaan"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_he5fp"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_oe5jq"]
 seamless = true
 noise = SubResource("FastNoiseLite_hbaan")
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u05pv"]
 sky_top_color = Color(0.551886, 0.658162, 0.932644, 1)
 sky_horizon_color = Color(0.756572, 0.627619, 0.517938, 1)
-sky_cover = SubResource("NoiseTexture2D_he5fp")
+sky_cover = SubResource("NoiseTexture2D_oe5jq")
 
-[sub_resource type="Sky" id="Sky_mykqc"]
+[sub_resource type="Sky" id="Sky_q0ila"]
 sky_material = SubResource("ProceduralSkyMaterial_u05pv")
 
 [sub_resource type="Environment" id="Environment_hbaan"]
 background_mode = 2
-sky = SubResource("Sky_mykqc")
+sky = SubResource("Sky_q0ila")
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_he5fp"]
 
@@ -88,7 +88,7 @@ visible = false
 shadow_enabled = true
 
 [node name="WallDoorway" parent="." instance=ExtResource("9_he5fp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.929815, 1, 14.1246)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.93, 0.5, 14.125)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2x48hvm5wswl"
-path.s3tc="res://.godot/imported/magma_texture.png-e973a63a2ce6754919b0cd1259f3c245.s3tc.ctex"
+uid="uid://c2cpkkg8drccr"
+path.bptc="res://.godot/imported/floor_tile_large_rocks_dungeon_texture.png-ee2b248797d6bc73b24ee50f5589b8a2.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,13 +11,13 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Environment/magma_texture.png"
-dest_files=["res://.godot/imported/magma_texture.png-e973a63a2ce6754919b0cd1259f3c245.s3tc.ctex"]
+source_file="res://Assets/Model/floor_tile_large_rocks_dungeon_texture.png"
+dest_files=["res://.godot/imported/floor_tile_large_rocks_dungeon_texture.png-ee2b248797d6bc73b24ee50f5589b8a2.bptc.ctex"]
 
 [params]
 
 compress/mode=2
-compress/high_quality=false
+compress/high_quality=true
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0

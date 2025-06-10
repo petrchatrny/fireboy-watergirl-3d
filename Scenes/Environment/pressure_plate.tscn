@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=4 uid="uid://cl87cfsvkgomg"]
 
-[ext_resource type="Texture2D" uid="uid://t063luy1jhvm" path="res://Assets/pressure_plate_texture.png" id="1_jj1qg"]
+[ext_resource type="Texture2D" uid="uid://t063luy1jhvm" path="res://Assets/Model/pressure_plate_texture.png" id="1_jj1qg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hpcgg"]
 resource_name = "Atlas"

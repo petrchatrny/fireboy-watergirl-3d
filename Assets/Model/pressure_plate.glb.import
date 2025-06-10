@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bo21mgyxyhncn"
-path="res://.godot/imported/watergirl.glb-b8b628c489fd79a41f909b5653b34081.scn"
+uid="uid://bf3ej0uskseyi"
+path="res://.godot/imported/pressure_plate.glb-e903a3f8ac2195f095bd2ce4a23c6a12.scn"
 
 [deps]
 
-source_file="res://Assets/watergirl.glb"
-dest_files=["res://.godot/imported/watergirl.glb-b8b628c489fd79a41f909b5653b34081.scn"]
+source_file="res://Assets/Model/pressure_plate.glb"
+dest_files=["res://.godot/imported/pressure_plate.glb-e903a3f8ac2195f095bd2ce4a23c6a12.scn"]
 
 [params]
 

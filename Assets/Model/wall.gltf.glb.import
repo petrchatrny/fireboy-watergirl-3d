@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bf3ej0uskseyi"
-path="res://.godot/imported/pressure_plate.glb-55ad8d613df23fc222194deb9adc1d44.scn"
+uid="uid://bjb4acahsuqp0"
+path="res://.godot/imported/wall.gltf.glb-35005121541237d0cdbb41f0c2b179cb.scn"
 
 [deps]
 
-source_file="res://Assets/pressure_plate.glb"
-dest_files=["res://.godot/imported/pressure_plate.glb-55ad8d613df23fc222194deb9adc1d44.scn"]
+source_file="res://Assets/Model/wall.gltf.glb"
+dest_files=["res://.godot/imported/wall.gltf.glb-35005121541237d0cdbb41f0c2b179cb.scn"]
 
 [params]
 

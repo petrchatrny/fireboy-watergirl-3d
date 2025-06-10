@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c50m7w3fhhco6"
-path.s3tc="res://.godot/imported/pressure_plate_Atlas.png-dc0e4487394f818d6afa22e5417f2171.s3tc.ctex"
+path.s3tc="res://.godot/imported/pressure_plate_Atlas.png-da6dd9f4667b89bac58779f33860ca41.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Assets/pressure_plate_Atlas.png"
-dest_files=["res://.godot/imported/pressure_plate_Atlas.png-dc0e4487394f818d6afa22e5417f2171.s3tc.ctex"]
+source_file="res://Assets/Model/pressure_plate_Atlas.png"
+dest_files=["res://.godot/imported/pressure_plate_Atlas.png-da6dd9f4667b89bac58779f33860ca41.s3tc.ctex"]
 
 [params]
 

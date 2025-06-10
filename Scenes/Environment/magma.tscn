@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bu2d2ymp8mdx7"]
 
 [ext_resource type="Shader" uid="uid://cdecvnyoun7ls" path="res://Scenes/Environment/magma.gdshader" id="1_mtb7a"]
-[ext_resource type="Texture2D" uid="uid://d2x48hvm5wswl" path="res://Assets/Environment/magma_texture.png" id="2_7cwqp"]
+[ext_resource type="Texture2D" uid="uid://d2x48hvm5wswl" path="res://Assets/Texture/magma_texture.png" id="2_7cwqp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7cwqp"]
 render_priority = 0

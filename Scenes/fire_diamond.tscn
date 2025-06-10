@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bnf8ek5288hyi"]
 
-[ext_resource type="PackedScene" uid="uid://bw67cvuivemi" path="res://Assets/diamond.glb" id="1_om668"]
+[ext_resource type="PackedScene" uid="uid://bw67cvuivemi" path="res://Assets/Model/diamond.glb" id="1_om668"]
 [ext_resource type="Shader" uid="uid://cy5ttstfxmvxi" path="res://Scenes/diamond.gdshader" id="2_4eaed"]
 [ext_resource type="Script" uid="uid://dpfigd0itodow" path="res://Scenes/fire_diamond.gd" id="2_iox3u"]
 

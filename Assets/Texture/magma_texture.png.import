@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pk6msimj8gst"
-path.bptc="res://.godot/imported/wall_doorway_dungeon_texture.png-2ac392ce3e76334f953288bf01d13f7e.bptc.ctex"
+uid="uid://d2x48hvm5wswl"
+path.s3tc="res://.godot/imported/magma_texture.png-9b47cb1288f840327a9878e5f9b9fc1b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,13 +11,13 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Environment/wall_doorway_dungeon_texture.png"
-dest_files=["res://.godot/imported/wall_doorway_dungeon_texture.png-2ac392ce3e76334f953288bf01d13f7e.bptc.ctex"]
+source_file="res://Assets/Texture/magma_texture.png"
+dest_files=["res://.godot/imported/magma_texture.png-9b47cb1288f840327a9878e5f9b9fc1b.s3tc.ctex"]
 
 [params]
 
 compress/mode=2
-compress/high_quality=true
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0

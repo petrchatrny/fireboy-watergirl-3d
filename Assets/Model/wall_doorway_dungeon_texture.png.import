@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2cpkkg8drccr"
-path.bptc="res://.godot/imported/floor_tile_large_rocks_dungeon_texture.png-11f8c2d2684aae3cffd95082efffb820.bptc.ctex"
+uid="uid://pk6msimj8gst"
+path.bptc="res://.godot/imported/wall_doorway_dungeon_texture.png-9da1db37eefbe67ad7d12e70059ad6c8.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Environment/floor_tile_large_rocks_dungeon_texture.png"
-dest_files=["res://.godot/imported/floor_tile_large_rocks_dungeon_texture.png-11f8c2d2684aae3cffd95082efffb820.bptc.ctex"]
+source_file="res://Assets/Model/wall_doorway_dungeon_texture.png"
+dest_files=["res://.godot/imported/wall_doorway_dungeon_texture.png-9da1db37eefbe67ad7d12e70059ad6c8.bptc.ctex"]
 
 [params]
 

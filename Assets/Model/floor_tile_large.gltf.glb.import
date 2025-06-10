@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://4enj6di3nnti"
-path="res://.godot/imported/stairs.gltf.glb-b89b0789d74ddb123898e28705850b44.scn"
+uid="uid://cijh67fr44ncq"
+path="res://.godot/imported/floor_tile_large.gltf.glb-33a997da433749164c2ea57a440d7b3b.scn"
 
 [deps]
 
-source_file="res://Assets/Environment/stairs.gltf.glb"
-dest_files=["res://.godot/imported/stairs.gltf.glb-b89b0789d74ddb123898e28705850b44.scn"]
+source_file="res://Assets/Model/floor_tile_large.gltf.glb"
+dest_files=["res://.godot/imported/floor_tile_large.gltf.glb-33a997da433749164c2ea57a440d7b3b.scn"]
 
 [params]
 

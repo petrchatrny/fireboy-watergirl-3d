@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=4 uid="uid://cd7nxpyvy0j1j"]
 
-[ext_resource type="Texture2D" uid="uid://lvvyj454pufh" path="res://Assets/Environment/wall_corner_small_dungeon_texture.png" id="1_i6x16"]
+[ext_resource type="Texture2D" uid="uid://cj2trjv4kqejf" path="res://Assets/Model/wall_corner_small_dungeon_texture.png" id="1_i6x16"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fnbxo"]
 resource_name = "texture"

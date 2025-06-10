@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://cvqotsgg2nf2b"]
+[gd_scene load_steps=13 format=3 uid="uid://cvqotsgg2nf2b"]
 
 [ext_resource type="PackedScene" uid="uid://cdv1k2dx4rsma" path="res://Scenes/Environment/floor_tile_large.tscn" id="1_3sk1a"]
+[ext_resource type="Script" uid="uid://c3xd87mesuv5w" path="res://Levels/level_1.gd" id="1_rs4xw"]
 [ext_resource type="PackedScene" uid="uid://bfccdulo15a1q" path="res://Scenes/Environment/wall.tscn" id="2_08mmt"]
 [ext_resource type="PackedScene" uid="uid://b26fsvh8h0we7" path="res://Scenes/Environment/wall_doorway.tscn" id="3_5ot28"]
 [ext_resource type="PackedScene" uid="uid://cd7nxpyvy0j1j" path="res://Scenes/Environment/wall_corner.tscn" id="4_aerfg"]
@@ -13,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://kgtyn5vo7nbx" path="res://Scenes/player.tscn" id="12_nmsli"]
 
 [node name="level_1" type="Node"]
+script = ExtResource("1_rs4xw")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.983365, 0.0822648, -0.161944, 0.139632, 0.227858, 0.96363, 0.116173, -0.970213, 0.212581, -2.1391, 11.6747, 0.152544)
@@ -271,6 +273,39 @@ transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -120.124, 0, 53.6417)
 [node name="FloorTileLarge65" parent="Enviroment/Floor" instance=ExtResource("1_3sk1a")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -13.9, 0, 144)
 
+[node name="Water" parent="Enviroment/Floor" instance=ExtResource("6_betor")]
+transform = Transform3D(0.38, 0, 0, 0, 2.5344, 0, 0, 0, 0.16, 1.35265, -0.36482, 32.2017)
+
+[node name="Water2" parent="Enviroment/Floor" instance=ExtResource("6_betor")]
+transform = Transform3D(0.311289, 0, 0, 0, 2.5344, 0, 0, 0, 0.16, -78.3705, -0.540629, 69.8611)
+
+[node name="Water3" parent="Enviroment/Floor" instance=ExtResource("6_betor")]
+transform = Transform3D(0.002182, 0, -0.159997, 0, 2.5344, 0, 0.379994, 0, 0.000918739, -89.1709, -0.540629, 31.7728)
+
+[node name="Magma" parent="Enviroment/Floor" instance=ExtResource("7_vjtdm")]
+transform = Transform3D(3.7422, 0, 0, 0, 0.081, 0, 0, 0, 1.59667, 2.0301, -0.746605, 79.9962)
+
+[node name="Magma2" parent="Enviroment/Floor" instance=ExtResource("7_vjtdm")]
+transform = Transform3D(3.38641, 0, 0, 0, 0.081, 0, 0, 0, 1.59667, -112.848, -0.166563, 69.4758)
+
+[node name="Magma3" parent="Enviroment/Floor" instance=ExtResource("7_vjtdm")]
+transform = Transform3D(0.129426, 0, -1.59571, 0, 0.081, 0, 3.73996, 0, 0.0552217, -151.62, -0.166563, 26.5707)
+
+[node name="Acid" parent="Enviroment/Floor" instance=ExtResource("8_bgw3c")]
+transform = Transform3D(0.162, 0, 0, 0, 1, 0, 0, 0, 0.4752, -28.8159, 0, 119)
+
+[node name="Acid3" parent="Enviroment/Floor" instance=ExtResource("8_bgw3c")]
+transform = Transform3D(0.162, 0, 0, 0, 1, 0, 0, 0, 0.4752, -28.8159, 0, 119)
+
+[node name="Acid2" parent="Enviroment/Floor" instance=ExtResource("8_bgw3c")]
+transform = Transform3D(0.162, 0, 0, 0, 1, 0, 0, 0, 0.4752, -44.9935, 0, 119)
+
+[node name="Acid4" parent="Enviroment/Floor" instance=ExtResource("8_bgw3c")]
+transform = Transform3D(0.162, 0, 0, 0, 1, 0, 0, 0, 0.4752, -45.693, 0, 119)
+
+[node name="Acid5" parent="Enviroment/Floor" instance=ExtResource("8_bgw3c")]
+transform = Transform3D(0.162, 0, 0, 0, 1, 0, 0, 0, 0.4752, -38.8239, 0, 119)
+
 [node name="Wall" type="Node3D" parent="Enviroment"]
 
 [node name="Wall8" parent="Enviroment/Wall" instance=ExtResource("2_08mmt")]
@@ -501,7 +536,7 @@ transform = Transform3D(0.585953, 0, 4.96555, 0, 5, 0, -4.96555, 0, 0.585953, 2.
 transform = Transform3D(0.585953, 0, 4.96555, 0, 5, 0, -4.96555, 0, 0.585953, 2.24253, 2.03049, 14.5528)
 
 [node name="Diamond3" parent="Enviroment/Diamond" instance=ExtResource("5_5ot28")]
-transform = Transform3D(0.585953, 0, 4.96555, 0, 5, 0, -4.96555, 0, 0.585953, -37.874, 9.68319, 117.906)
+transform = Transform3D(0.585953, 0, 4.96555, 0, 5, 0, -4.96555, 0, 0.585953, -34.2341, 10, 116.491)
 
 [node name="Diamond4" parent="Enviroment/Diamond" instance=ExtResource("5_5ot28")]
 transform = Transform3D(0.585953, 0, 4.96555, 0, 5, 0, -4.96555, 0, 0.585953, -79.342, 5.43731, 71.4928)
@@ -510,13 +545,13 @@ transform = Transform3D(0.585953, 0, 4.96555, 0, 5, 0, -4.96555, 0, 0.585953, -7
 transform = Transform3D(0.585953, 0, 4.96555, 0, 5, 0, -4.96555, 0, 0.585953, -88.1526, 0.367466, 31.0991)
 
 [node name="Diamond2" parent="Enviroment/Diamond" instance=ExtResource("6_aerfg")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -37.494, 9.683, 124.803)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -41.4092, 10, 123.809)
 
 [node name="Diamond5" parent="Enviroment/Diamond" instance=ExtResource("6_aerfg")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -111.326, 6.41073, 70.7396)
 
 [node name="Diamond8" parent="Enviroment/Diamond" instance=ExtResource("6_aerfg")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -0.599432, 6.18482, 70.7396)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -0.599432, 6.18482, 70.3178)
 
 [node name="Diamond10" parent="Enviroment/Diamond" instance=ExtResource("6_aerfg")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -0.599432, 1.74134, 12.2869)
@@ -524,44 +559,11 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -0.599432, 1.74134, 12.2869)
 [node name="Diamond6" parent="Enviroment/Diamond" instance=ExtResource("6_aerfg")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -152.971, 6.41073, 27.4024)
 
-[node name="Water" parent="Enviroment" instance=ExtResource("6_betor")]
-transform = Transform3D(0.38, 0, 0, 0, 2.5344, 0, 0, 0, 0.16, 1.35265, -0.36482, 32.2017)
+[node name="PressurePlate2" parent="Enviroment" instance=ExtResource("9_lrvbd")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -117.077, 0.192339, 36.4414)
 
-[node name="Water2" parent="Enviroment" instance=ExtResource("6_betor")]
-transform = Transform3D(0.38, 0, 0, 0, 2.5344, 0, 0, 0, 0.16, -75.6829, -0.540629, 69.8611)
-
-[node name="Water3" parent="Enviroment" instance=ExtResource("6_betor")]
-transform = Transform3D(0.002182, 0, -0.159997, 0, 2.5344, 0, 0.379994, 0, 0.000918739, -89.1709, -0.540629, 31.7728)
-
-[node name="Magma" parent="Enviroment" instance=ExtResource("7_vjtdm")]
-transform = Transform3D(3.7422, 0, 0, 0, 0.081, 0, 0, 0, 1.59667, 2.0301, -0.746605, 79.9962)
-
-[node name="Magma2" parent="Enviroment" instance=ExtResource("7_vjtdm")]
-transform = Transform3D(3.7422, 0, 0, 0, 0.081, 0, 0, 0, 1.59667, -115.071, -0.166563, 69.4758)
-
-[node name="Magma3" parent="Enviroment" instance=ExtResource("7_vjtdm")]
-transform = Transform3D(0.129426, 0, -1.59571, 0, 0.081, 0, 3.73996, 0, 0.0552217, -151.62, -0.166563, 26.5707)
-
-[node name="Acid" parent="Enviroment" instance=ExtResource("8_bgw3c")]
-transform = Transform3D(0.162, 0, 0, 0, 1, 0, 0, 0, 0.4752, -28.8159, 0, 119)
-
-[node name="Acid3" parent="Enviroment" instance=ExtResource("8_bgw3c")]
-transform = Transform3D(0.162, 0, 0, 0, 1, 0, 0, 0, 0.4752, -28.8159, 0, 119)
-
-[node name="Acid2" parent="Enviroment" instance=ExtResource("8_bgw3c")]
-transform = Transform3D(0.162, 0, 0, 0, 1, 0, 0, 0, 0.4752, -44.9935, 0, 119)
-
-[node name="Acid4" parent="Enviroment" instance=ExtResource("8_bgw3c")]
-transform = Transform3D(0.162, 0, 0, 0, 1, 0, 0, 0, 0.4752, -45.693, 0, 119)
-
-[node name="Acid5" parent="Enviroment" instance=ExtResource("8_bgw3c")]
-transform = Transform3D(0.162, 0, 0, 0, 1, 0, 0, 0, 0.4752, -38.8239, 0, 119)
-
-[node name="PressurePlate" parent="." instance=ExtResource("9_lrvbd")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -74.748, 1.44613, 105.554)
-
-[node name="PressurePlate2" parent="." instance=ExtResource("9_lrvbd")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -117.107, 0.192339, 36.4452)
+[node name="PressurePlate" parent="Enviroment" instance=ExtResource("9_lrvbd")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -74.7179, 1.44613, 105.55)
 
 [node name="SplitScreen" type="Control" parent="."]
 layout_mode = 3
@@ -582,11 +584,11 @@ stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="SplitScreen/LeftScreen"]
 handle_input_locally = false
-size = Vector2i(1152, 648)
+size = Vector2i(1080, 720)
 render_target_update_mode = 4
 
-[node name="Player" parent="SplitScreen/LeftScreen/SubViewport" instance=ExtResource("12_nmsli")]
-slide_on_ceiling = false
+[node name="Watergirl" parent="SplitScreen/LeftScreen/SubViewport" instance=ExtResource("12_nmsli")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -612,5 +614,3 @@ offset_top = 579.0
 offset_right = 149.0
 offset_bottom = 627.0
 text = "Score: 0"
-
-[connection signal="timeout" from="CanvasLayer/Timer" to="SplitScreen/LeftScreen/SubViewport/Player" method="_on_timer_timeout"]

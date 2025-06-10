@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b3t4ry4nrbhxu"
-path="res://.godot/imported/fireboy.glb-1354b24dbbc7ced98bcdd3cd819fa830.scn"
+uid="uid://bw67cvuivemi"
+path="res://.godot/imported/diamond.glb-00f71a52f04acf1d8be0a908c04c832c.scn"
 
 [deps]
 
-source_file="res://Assets/fireboy.glb"
-dest_files=["res://.godot/imported/fireboy.glb-1354b24dbbc7ced98bcdd3cd819fa830.scn"]
+source_file="res://Assets/Model/diamond.glb"
+dest_files=["res://.godot/imported/diamond.glb-00f71a52f04acf1d8be0a908c04c832c.scn"]
 
 [params]
 

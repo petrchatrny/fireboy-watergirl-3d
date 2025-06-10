@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://epwpw23qgnxh"
-path.bptc="res://.godot/imported/stairs_dungeon_texture.png-fcb1300b3b1b612f9fdb670bd61227b8.bptc.ctex"
+uid="uid://n35bwdmlydrd"
+path.bptc="res://.godot/imported/wall_dungeon_texture.png-e7a568d6492a97f9495c31a0dc6f0a80.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Environment/stairs_dungeon_texture.png"
-dest_files=["res://.godot/imported/stairs_dungeon_texture.png-fcb1300b3b1b612f9fdb670bd61227b8.bptc.ctex"]
+source_file="res://Assets/Model/wall_dungeon_texture.png"
+dest_files=["res://.godot/imported/wall_dungeon_texture.png-e7a568d6492a97f9495c31a0dc6f0a80.bptc.ctex"]
 
 [params]
 

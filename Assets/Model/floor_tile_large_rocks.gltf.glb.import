@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://d2ixfckt0fw56"
-path="res://.godot/imported/wall_doorway.glb-2de9cfb108954b12b971e541f0cbc872.scn"
+uid="uid://cayf34v1jkuf"
+path="res://.godot/imported/floor_tile_large_rocks.gltf.glb-af1f3e5bf9f4b1596b868cce68e0b241.scn"
 
 [deps]
 
-source_file="res://Assets/Environment/wall_doorway.glb"
-dest_files=["res://.godot/imported/wall_doorway.glb-2de9cfb108954b12b971e541f0cbc872.scn"]
+source_file="res://Assets/Model/floor_tile_large_rocks.gltf.glb"
+dest_files=["res://.godot/imported/floor_tile_large_rocks.gltf.glb-af1f3e5bf9f4b1596b868cce68e0b241.scn"]
 
 [params]
 

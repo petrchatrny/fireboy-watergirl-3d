@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://t063luy1jhvm"
-path.bptc="res://.godot/imported/pressure_plate_texture.png-4278f5144a41729d4370669d8819877f.bptc.ctex"
+uid="uid://b12algyfdm7oo"
+path.bptc="res://.godot/imported/floor_tile_large_dungeon_texture.png-67b11bc6e1c79caf070d34e13e3ef176.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "3795851c85c1d7fbaf0b3b63054ec153"
-}
 
 [deps]
 
-source_file="res://Assets/pressure_plate_texture.png"
-dest_files=["res://.godot/imported/pressure_plate_texture.png-4278f5144a41729d4370669d8819877f.bptc.ctex"]
+source_file="res://Assets/Model/floor_tile_large_dungeon_texture.png"
+dest_files=["res://.godot/imported/floor_tile_large_dungeon_texture.png-67b11bc6e1c79caf070d34e13e3ef176.bptc.ctex"]
 
 [params]
 

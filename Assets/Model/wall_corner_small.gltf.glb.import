@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bw67cvuivemi"
-path="res://.godot/imported/diamond.glb-2851246f5613ee4bb0017ca980d93809.scn"
+uid="uid://cfxrgoyl2mvx4"
+path="res://.godot/imported/wall_corner_small.gltf.glb-bfd545d4528e739b5fdcf601d27d72b9.scn"
 
 [deps]
 
-source_file="res://Assets/diamond.glb"
-dest_files=["res://.godot/imported/diamond.glb-2851246f5613ee4bb0017ca980d93809.scn"]
+source_file="res://Assets/Model/wall_corner_small.gltf.glb"
+dest_files=["res://.godot/imported/wall_corner_small.gltf.glb-bfd545d4528e739b5fdcf601d27d72b9.scn"]
 
 [params]
 
