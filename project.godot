@@ -11,9 +11,14 @@ config_version=5
 [application]
 
 config/name="Fireboy and Watergirl 3D"
-run/main_scene="uid://eypjlm3bhk8f"
+run/main_scene="uid://dpmfyckiusptd"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1080
+window/size/viewport_height=720
 
 [input]
 

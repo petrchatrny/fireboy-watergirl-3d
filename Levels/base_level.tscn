@@ -1,0 +1,187 @@
+[gd_scene load_steps=10 format=3 uid="uid://4j08f75jksn7"]
+
+[ext_resource type="Script" uid="uid://cq8nce30at8mp" path="res://Levels/base_level.gd" id="1_ujkqx"]
+[ext_resource type="PackedScene" uid="uid://kgtyn5vo7nbx" path="res://Scenes/player.tscn" id="2_3vydx"]
+[ext_resource type="Texture2D" uid="uid://bcrbhcufavkk1" path="res://Assets/HUD/diamond_icon.png" id="3_n4mxg"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_n4mxg"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_he5fp"]
+seamless = true
+noise = SubResource("FastNoiseLite_n4mxg")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ruyyf"]
+sky_top_color = Color(0.551886, 0.658162, 0.932644, 1)
+sky_horizon_color = Color(0.756572, 0.627619, 0.517938, 1)
+sky_cover = SubResource("NoiseTexture2D_he5fp")
+
+[sub_resource type="Sky" id="Sky_mykqc"]
+sky_material = SubResource("ProceduralSkyMaterial_ruyyf")
+
+[sub_resource type="Environment" id="Environment_m1e4t"]
+background_mode = 2
+sky = SubResource("Sky_mykqc")
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_j3xrb"]
+
+[node name="BaseLevel" type="Node"]
+script = ExtResource("1_ujkqx")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="TimerRect" type="ColorRect" parent="HUD"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -118.0
+offset_top = -60.0
+offset_right = -18.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 0
+color = Color(0.219501, 0.219501, 0.219501, 1)
+
+[node name="TimeLabel" type="Label" parent="HUD/TimerRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -41.5
+offset_top = -14.5
+offset_right = 41.5
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "0:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreRect" type="ColorRect" parent="HUD"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -58.0
+offset_right = 102.0
+offset_bottom = -19.0
+grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+color = Color(0.219501, 0.219501, 0.219501, 1)
+
+[node name="Control" type="Control" parent="HUD/ScoreRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -42.0
+offset_top = -23.0
+offset_right = 42.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DiamondIcon" type="TextureRect" parent="HUD/ScoreRect/Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 11.0
+offset_top = -10.0
+offset_right = 31.0
+offset_bottom = 10.0
+grow_vertical = 2
+texture = ExtResource("3_n4mxg")
+expand_mode = 1
+
+[node name="DiamondCountLabel" type="Label" parent="HUD/ScoreRect/Control"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -11.5
+offset_right = -10.0
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "0/0"
+
+[node name="SplitScreen" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LeftScreen" type="SubViewportContainer" parent="SplitScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -540.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SplitScreen/LeftScreen"]
+handle_input_locally = false
+size = Vector2i(540, 720)
+render_target_update_mode = 4
+
+[node name="Watergirl" parent="SplitScreen/LeftScreen/SubViewport" instance=ExtResource("2_3vydx")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+
+[node name="RightScreen" type="SubViewportContainer" parent="SplitScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+mouse_target = true
+
+[node name="SubViewport" type="SubViewport" parent="SplitScreen/RightScreen"]
+handle_input_locally = false
+size = Vector2i(540, 720)
+render_target_update_mode = 4
+
+[node name="Fireboy" parent="SplitScreen/RightScreen/SubViewport" instance=ExtResource("2_3vydx")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+is_watergirl = false
+
+[node name="ColorRect" type="ColorRect" parent="SplitScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.0
+offset_top = -360.0
+offset_right = 3.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_m1e4t")
+camera_attributes = SubResource("CameraAttributesPractical_j3xrb")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
