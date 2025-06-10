@@ -5,22 +5,17 @@ extends CharacterBody3D
 # ovládání
 @export var controller_id: int = -1  # -1 = klávesnice/myš, 0+ = gamepad ID
 @export var use_mouse: bool = false  # ovládání kamery pomocí myši
-var score: int = 0
-
 var walk_left_action := ""
 var walk_right_action := ""
 var walk_forward_action := ""
 var walk_back_action := ""
 var jump_action := ""
-@export var character_scene: PackedScene = preload("res://Scenes/watergirl_mesh.tscn")
-@onready var label = $"../../../../CanvasLayer/Label"
-@onready var timer = $"../../../../CanvasLayer/Timer"
-@onready var total_time_seconds:int = 0  # 0 minutes
 
 # pohyb
-@export var speed = 5
-@export var jump_velocity = 4.5
+@export var speed = 3.5
+@export var jump_velocity = 5.5
 var grounded = false
+var is_jumping_now = false
 
 # rotace kamery
 var yaw = 0.0
@@ -30,18 +25,10 @@ var sensitivity = 0.003
 # části těla
 const WATERGIRL_MESH_PATH := "res://Scenes/watergirl_mesh.tscn"
 const FIREBOY_MESH_PATH := "res://Scenes/fireboy_mesh.tscn"
-
 var character_mesh: Node3D
 @onready var step_cast = $StepCast
 
-# Vytvoř reference na diamanty
-@onready var fire_diamond = preload("res://Scenes/fire_diamond.tscn")
-@onready var water_diamond = preload("res://Scenes/water_diamond.tscn")
-
 func _ready() -> void:
-	# Start the timer
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	$"../../../../CanvasLayer/Timer".start()
 	# nastavení podle typu hráče
 	var mesh_scene = null
 	if is_watergirl:
@@ -63,13 +50,19 @@ func _ready() -> void:
 	character_mesh = mesh_scene.instantiate()
 	add_child(character_mesh)
 	
+	# nastavení animačního stromu
+	var animation_player = character_mesh.get_node("AnimationPlayer")
+	$AnimationTree.anim_player = animation_player.get_path()
+	$AnimationTree.active = true
+	
 	for body in get_children():
 		if body is Area3D:
 			body.connect("body_entered", Callable(self, "_on_body_entered"))
 
 	# ignorování kolize kamery s vlastním tělem hráče
 	$Head/SpringArm3D.add_excluded_object(get_rid())
-	
+
+# vyhodnocování fyziky v čase
 func _physics_process(delta: float) -> void:
 	# přidání gravitace
 	if not is_grounded():
@@ -78,24 +71,60 @@ func _physics_process(delta: float) -> void:
 	# skok
 	if is_jumping() and is_grounded():
 		velocity.y += jump_velocity
+		is_jumping_now = true
 	
 	# chůze
-	var input_direction = get_movement_vector()
+	var input_direction = get_direction()
 	var direction = Vector3(input_direction.x, 0, input_direction.y).rotated(Vector3.UP, yaw)
 	if direction:
 		velocity.x = direction.x * speed
 		velocity.z = direction.z * speed
 		
 		# otočení postavy směrem, kterým jde
-		var look_target = global_transform.origin + direction
-		var target_angle = atan2(-direction.x, -direction.z)
+		var target_angle = atan2(direction.x, direction.z)
 		character_mesh.rotation.y = target_angle
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
+#	
+	# animace pohybŮ
+	$AnimationTree.set("parameters/conditions/idle",  input_direction == Vector2.ZERO and is_grounded())
+	$AnimationTree.set("parameters/conditions/walking", input_direction != Vector2.ZERO and is_grounded())
+	$AnimationTree.set("parameters/conditions/jumping", not is_grounded())
 	
 	move(delta)
+	is_jumping_now = false
 
+# zachytávání vstupů na periferiích
+func _input(event: InputEvent) -> void:
+	# reakce na pohyb myší
+	if controller_id == -1 and event is InputEventMouseMotion:
+		yaw -= event.relative.x * sensitivity
+		pitch -= event.relative.y * sensitivity
+	
+	# reakce na pohyb pravého joysticku 
+	elif controller_id >= 0:
+		yaw -= Input.get_joy_axis(controller_id, JOY_AXIS_RIGHT_X) * sensitivity * 10
+		pitch -= Input.get_joy_axis(controller_id, JOY_AXIS_RIGHT_Y) * sensitivity * 10
+	
+	rotate_camera()
+
+# zpracování kolizí
+func _on_body_entered(body: Node) -> void:
+	if body is Area3D:
+		print("Body entered: ", body.name)  # Debug: Zobrazí jméno objektu
+		if is_watergirl:
+			# Pokud je to Watergirl a diamant je "water_diamond", znič diamant
+			if body.type == "water":  # Připojeno přes custom property
+				body.queue_free()
+				print("Watergirl picked up the blue diamond!")
+		else:
+			# Pokud je to Fireboy a diamant je "fire_diamond", znič diamant
+			if body.type == "fire":  # Připojeno přes custom property
+				body.queue_free()
+				print("Fireboy picked up the red diamond!")
+
+# pohyb v čase
 func move(delta: float):
 	step_cast.global_position.x = global_position.x + velocity.x * delta
 	step_cast.global_position.z = global_position.z + velocity.z * delta
@@ -122,72 +151,35 @@ func move(delta: float):
 		grounded = true
 	else:
 		grounded = false
-	
+
 	move_and_slide()
 
-func _input(event: InputEvent) -> void:
-	# reakce na pohyb myší
-	if controller_id == -1 and event is InputEventMouseMotion:
-		yaw -= event.relative.x * sensitivity
-		pitch -= event.relative.y * sensitivity
-	
-	# reakce na pohyb joysticku 
-	elif controller_id >= 0:
-		yaw -= Input.get_joy_axis(controller_id, JOY_AXIS_RIGHT_X) * sensitivity * 10
-		pitch -= Input.get_joy_axis(controller_id, JOY_AXIS_RIGHT_Y) * sensitivity * 10
-	
-	# natočení kamery
+# otočení kamery kamery
+func rotate_camera():
 	pitch = clamp(pitch, deg_to_rad(-89.0), deg_to_rad(89.0))
 	yaw = wrap(yaw, 0.0, deg_to_rad(360))
 	$Head.global_rotation = Vector3(pitch, yaw, 0)
-		
-func get_movement_vector() -> Vector2:
+
+# na základě hodnot ze vstupních periferií sestaví směrový vektor pohybu
+func get_direction() -> Vector2:
 	if controller_id >= 0:
 		var x = Input.get_joy_axis(controller_id, JOY_AXIS_LEFT_X)
 		var y = Input.get_joy_axis(controller_id, JOY_AXIS_LEFT_Y)
+		
 		var deadzone = 0.2
-		return Vector2(
-			x if abs(x) > deadzone else 0.0,
-			y if abs(y) > deadzone else 0.0
-		).normalized()
+		var direction = Vector2(x if abs(x) > deadzone else 0.0, y if abs(y) > deadzone else 0.0)
+		
+		return direction.normalized()
 	else:
-		return Input.get_vector(
-			walk_left_action,
-			walk_right_action,
-			walk_forward_action,
-			walk_back_action
-		)
-	
-# Timer callback function
-func _on_timer_timeout() -> void:
-	print(total_time_seconds)
-	total_time_seconds += 1
-	var m = int(total_time_seconds / 60)
-	var s = total_time_seconds - m * 60
-	
-	# Update the label with formatted time
-	label.text = "%02d:%02d" % [m, s]
+		return Input.get_vector(walk_left_action, walk_right_action, walk_forward_action, walk_back_action)
 
+# na základě hodnot ze vstupních periferií vyhodnotí, jestli má hráč skákat
 func is_jumping() -> bool:
 	if controller_id >= 0:
 		return Input.is_joy_button_pressed(controller_id, JOY_BUTTON_A)
 	else:
 		return jump_action != "" and Input.is_action_just_pressed(jump_action)
-		
+
+# true, pokud je hráč uzeměný (nepadá, neskáče, nelétá, stojí na pevné zemi)
 func is_grounded() -> bool:
 	return grounded || is_on_floor()
-
-# Funkce pro zpracování kolize s diamantem
-func _on_body_entered(body: Node) -> void:
-	if body is Area3D:
-		print("Body entered: ", body.name)  # Debug: Zobrazí jméno objektu
-		if is_watergirl:
-			# Pokud je to Watergirl a diamant je "water_diamond", znič diamant
-			if body.type == "water":  # Připojeno přes custom property
-				body.queue_free()
-				print("Watergirl picked up the blue diamond!")
-		else:
-			# Pokud je to Fireboy a diamant je "fire_diamond", znič diamant
-			if body.type == "fire":  # Připojeno přes custom property
-				body.queue_free()
-				print("Fireboy picked up the red diamond!")

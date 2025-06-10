@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://kgtyn5vo7nbx"]
+[gd_scene load_steps=19 format=3 uid="uid://kgtyn5vo7nbx"]
 
 [ext_resource type="Script" uid="uid://mf5klf15v0yg" path="res://Scenes/player.gd" id="1_rpqav"]
 
@@ -8,6 +8,76 @@
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_v0iea"]
 height = 0.1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tkn66"]
+animation = &"die"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gpvjm"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_w1lff"]
+animation = &"jump"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6njcj"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_w1lff"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tkn66"]
+xfade_time = 0.2
+switch_mode = 1
+advance_mode = 2
+advance_condition = &"walking"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pg4fn"]
+xfade_time = 0.2
+switch_mode = 1
+advance_mode = 2
+advance_condition = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kp8es"]
+switch_mode = 1
+advance_mode = 2
+advance_condition = &"jumping"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_a5xow"]
+switch_mode = 1
+advance_mode = 2
+advance_condition = &"dead"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_a67du"]
+switch_mode = 1
+advance_mode = 2
+advance_condition = &"dead"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_v0iea"]
+xfade_time = 0.2
+switch_mode = 1
+advance_mode = 2
+advance_condition = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cvnsp"]
+advance_mode = 2
+advance_condition = &"jumping"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6t5aa"]
+advance_mode = 2
+advance_condition = &"walking"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_v0iea"]
+states/Die/node = SubResource("AnimationNodeAnimation_tkn66")
+states/Die/position = Vector2(834, 92)
+states/End/position = Vector2(1136, 234)
+states/Idle/node = SubResource("AnimationNodeAnimation_gpvjm")
+states/Idle/position = Vector2(342, 65)
+states/Jump/node = SubResource("AnimationNodeAnimation_w1lff")
+states/Jump/position = Vector2(528, 213)
+states/Start/position = Vector2(85, 65)
+states/Walk/node = SubResource("AnimationNodeAnimation_6njcj")
+states/Walk/position = Vector2(562, 44)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_w1lff"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_tkn66"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_pg4fn"), "Idle", "Jump", SubResource("AnimationNodeStateMachineTransition_kp8es"), "Walk", "Die", SubResource("AnimationNodeStateMachineTransition_a5xow"), "Jump", "Die", SubResource("AnimationNodeStateMachineTransition_a67du"), "Jump", "Idle", SubResource("AnimationNodeStateMachineTransition_v0iea"), "Walk", "Jump", SubResource("AnimationNodeStateMachineTransition_cvnsp"), "Jump", "Walk", SubResource("AnimationNodeStateMachineTransition_6t5aa")]
+graph_offset = Vector2(19.7917, 0)
 
 [node name="Player" type="CharacterBody3D"]
 floor_snap_length = 0.0
@@ -32,3 +102,10 @@ spring_length = 5.0
 [node name="StepCast" type="ShapeCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.576212, 0)
 shape = SubResource("CylinderShape3D_v0iea")
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_v0iea")
+parameters/conditions/dead = false
+parameters/conditions/idle = false
+parameters/conditions/jumping = false
+parameters/conditions/walking = false
