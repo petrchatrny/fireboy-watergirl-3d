@@ -1,6 +1,28 @@
-[gd_scene load_steps=5 format=3 uid="uid://cj8mmbgqa0lrq"]
+[gd_scene load_steps=6 format=3 uid="uid://cj8mmbgqa0lrq"]
 
 [ext_resource type="Shader" uid="uid://bgcav5qdaf381" path="res://Scenes/Environment/water.gdshader" id="1_2iyx0"]
+
+[sub_resource type="GDScript" id="GDScript_raoi1"]
+script/source = "extends StaticBody3D
+
+@export var type: String = \"acid\"  # Identifikuje tento objekt jako \"acid\"
+@onready var area: Area3D = $Area3D  # Připojení k Area3D pro detekci vstupu
+
+func _ready() -> void:
+	# Připojíme signál pro detekci kolize
+	area.connect(\"body_entered\", Callable(self, \"_on_body_entered\"))
+
+# Funkce pro zpracování kolize s postavou
+func _on_body_entered(body: Node) -> void:
+	if body is CharacterBody3D:
+		print(\"Body entered: \", body.name)  # Ladicí výpis pro kontrolu
+		if body.is_watergirl:
+			print(\"Watergirl touched acid\")
+			body.die(\"Acid killed Watergirl!\")  # Smrt pro Watergirl
+		elif not body.is_watergirl:
+			print(\"Fireboy touched acid\")
+			body.die(\"Acid killed Fireboy!\")  # Smrt pro Fireboy
+"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pobbv"]
 render_priority = 0
@@ -23,9 +45,12 @@ subdivide_depth = 50
 size = Vector3(100, 1, 100)
 
 [node name="Acid" type="StaticBody3D"]
+script = SubResource("GDScript_raoi1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_aomj4")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_rscml")

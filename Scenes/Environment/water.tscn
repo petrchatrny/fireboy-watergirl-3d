@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://blsb4oj0d0svv"]
+[gd_scene load_steps=6 format=3 uid="uid://blsb4oj0d0svv"]
 
 [ext_resource type="Shader" uid="uid://bgcav5qdaf381" path="res://Scenes/Environment/water.gdshader" id="1_nph0p"]
+[ext_resource type="Script" uid="uid://b1ui8d6lfc8dt" path="res://Scenes/Environment/water.gd" id="1_nxc3c"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pobbv"]
 render_priority = 0
@@ -25,9 +26,12 @@ size = Vector3(100, 1, 100)
 [node name="Water" type="StaticBody3D"]
 collision_layer = 4
 collision_mask = 0
+script = ExtResource("1_nxc3c")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_tw7do")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_nph0p")
