@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2x48hvm5wswl"
-path.s3tc="res://.godot/imported/magma_texture.png-9b47cb1288f840327a9878e5f9b9fc1b.s3tc.ctex"
+uid="uid://bm2xdx7nwab2w"
+path.s3tc="res://.godot/imported/lava_height.png-ba8f1b6f658ccd11f6566651fe34beae.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Texture/magma_texture.png"
-dest_files=["res://.godot/imported/magma_texture.png-9b47cb1288f840327a9878e5f9b9fc1b.s3tc.ctex"]
+source_file="res://Assets/Texture/lava_height.png"
+dest_files=["res://.godot/imported/lava_height.png-ba8f1b6f658ccd11f6566651fe34beae.s3tc.ctex"]
 
 [params]
 
