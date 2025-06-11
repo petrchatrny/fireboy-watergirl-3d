@@ -1,13 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://tcv1x6gfbx4l"]
+[gd_scene load_steps=6 format=3 uid="uid://tcv1x6gfbx4l"]
 
 [ext_resource type="PackedScene" uid="uid://bw67cvuivemi" path="res://Assets/Model/diamond.glb" id="1_cbv2l"]
-[ext_resource type="Shader" uid="uid://cy5ttstfxmvxi" path="res://Scenes/diamond.gdshader" id="2_8ei8f"]
 [ext_resource type="Script" uid="uid://dmf6vi6y1ebgp" path="res://Scenes/water_diamond.gd" id="2_vl1mj"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_j63wr"]
-render_priority = 0
-shader = ExtResource("2_8ei8f")
-shader_parameter/albedo_color = Color(0.363729, 0.478253, 1, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cbv2l"]
+albedo_color = Color(0.384077, 0.264572, 1, 1)
+emission_enabled = true
+emission = Color(0, 0.352941, 1, 1)
+emission_energy_multiplier = 2.21
 
 [sub_resource type="GDScript" id="GDScript_8ei8f"]
 script/source = "extends Area3D
@@ -53,7 +53,7 @@ size = Vector3(0.515564, 0.514038, 0.612757)
 script = ExtResource("2_vl1mj")
 
 [node name="group1022280760" parent="." index="0"]
-surface_material_override/0 = SubResource("ShaderMaterial_j63wr")
+surface_material_override/0 = SubResource("StandardMaterial3D_cbv2l")
 
 [node name="Area3D" type="Area3D" parent="." index="1"]
 script = SubResource("GDScript_8ei8f")
@@ -61,3 +61,9 @@ script = SubResource("GDScript_8ei8f")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00546265, -0.0531616, -0.00420475)
 shape = SubResource("BoxShape3D_xv4yd")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0063709, 0)
+light_color = Color(0.373591, 0.567476, 1, 1)
+light_energy = 4.0
+omni_range = 4.0
