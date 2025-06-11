@@ -2,22 +2,25 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://epwpw23qgnxh"
-path.bptc="res://.godot/imported/stairs_dungeon_texture.png-e64d58b985160fc8e0f625c15dfd38cf.bptc.ctex"
+uid="uid://dqxu8wlkw38c6"
+path.s3tc="res://.godot/imported/candle_triple_dungeon_texture.png-f46570daa25d69006c3915ded63ba561.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "9a714bc33f4314ea4520009f20b048a8"
+}
 
 [deps]
 
-source_file="res://Assets/Model/stairs_dungeon_texture.png"
-dest_files=["res://.godot/imported/stairs_dungeon_texture.png-e64d58b985160fc8e0f625c15dfd38cf.bptc.ctex"]
+source_file="res://Assets/Model/candle_triple_dungeon_texture.png"
+dest_files=["res://.godot/imported/candle_triple_dungeon_texture.png-f46570daa25d69006c3915ded63ba561.s3tc.ctex"]
 
 [params]
 
 compress/mode=2
-compress/high_quality=true
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
