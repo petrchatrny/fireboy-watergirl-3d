@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://bu2d2ymp8mdx7"]
+[gd_scene load_steps=11 format=3 uid="uid://bu2d2ymp8mdx7"]
 
+[ext_resource type="Script" uid="uid://bvyjq3sq2u5qb" path="res://Scenes/Environment/magma.gd" id="1_gvg3k"]
 [ext_resource type="Shader" uid="uid://cdecvnyoun7ls" path="res://Scenes/Environment/magma.gdshader" id="1_mtb7a"]
 [ext_resource type="Texture2D" uid="uid://bm2xdx7nwab2w" path="res://Assets/Texture/lava_height.png" id="2_0mcnw"]
 [ext_resource type="Texture2D" uid="uid://cr7kl33qlkphg" path="res://Assets/Texture/lava_basecolor.png" id="2_sfk05"]
@@ -7,7 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://bce8kswkc84hv" path="res://Assets/Texture/lava_normal.png" id="5_yls3b"]
 [ext_resource type="Texture2D" uid="uid://cqbtm8p7k8bxp" path="res://Assets/Texture/lava_roughness.png" id="6_gvg3k"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_u3i4u"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_7cwqp"]
+size = Vector3(3, 1, 3)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yls3b"]
 render_priority = 0
 shader = ExtResource("1_mtb7a")
 shader_parameter/Albedo_Tex = ExtResource("2_sfk05")
@@ -18,21 +22,18 @@ shader_parameter/Normal_Tex = ExtResource("5_yls3b")
 shader_parameter/Emission_Strength = 6.085
 shader_parameter/Noise_Speed = 0.15
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_mv2v3"]
-material = SubResource("ShaderMaterial_u3i4u")
-size = Vector2(10, 10)
+[sub_resource type="BoxMesh" id="BoxMesh_v7ojy"]
+material = SubResource("ShaderMaterial_yls3b")
+size = Vector3(3, 1, 3)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_7cwqp"]
-size = Vector3(10, 1, 10)
-
-[node name="Magma" type="StaticBody3D"]
+[node name="Magma" type="Area3D"]
 collision_layer = 4
-collision_mask = 0
+collision_mask = 5
+script = ExtResource("1_gvg3k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_7cwqp")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("PlaneMesh_mv2v3")
-
-[node name="Area3D" type="Area3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-shape = SubResource("BoxShape3D_7cwqp")
+mesh = SubResource("BoxMesh_v7ojy")
+skeleton = NodePath("../..")

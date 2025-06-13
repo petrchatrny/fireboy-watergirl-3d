@@ -1,7 +1,27 @@
-[gd_scene load_steps=6 format=3 uid="uid://blsb4oj0d0svv"]
+[gd_scene load_steps=8 format=3 uid="uid://blsb4oj0d0svv"]
 
 [ext_resource type="Shader" uid="uid://bgcav5qdaf381" path="res://Scenes/Environment/water.gdshader" id="1_nph0p"]
-[ext_resource type="Script" uid="uid://b1ui8d6lfc8dt" path="res://Scenes/Environment/water.gd" id="1_nxc3c"]
+[ext_resource type="Script" uid="uid://ngjvjjq7dhm8" path="res://Scenes/Environment/water.gd" id="1_nxc3c"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nph0p"]
+size = Vector3(100, 1, 100)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v8nef"]
+render_priority = 0
+shader = ExtResource("1_nph0p")
+shader_parameter/out_color = Color(0, 0.2, 1, 1)
+shader_parameter/amount = 0.8
+shader_parameter/beer_factor = 0.2
+shader_parameter/metallic = 0.7
+shader_parameter/roughness = 0.3
+shader_parameter/specular = 0.5
+
+[sub_resource type="BoxMesh" id="BoxMesh_v8nef"]
+material = SubResource("ShaderMaterial_v8nef")
+size = Vector3(100, 0.7, 100)
+subdivide_width = 20
+subdivide_height = 20
+subdivide_depth = 20
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pobbv"]
 render_priority = 0
@@ -20,18 +40,19 @@ size = Vector2(100, 100)
 subdivide_width = 50
 subdivide_depth = 50
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_nph0p"]
-size = Vector3(100, 1, 100)
-
-[node name="Water" type="StaticBody3D"]
-collision_layer = 4
-collision_mask = 0
+[node name="Water" type="Area3D"]
+collision_layer = 5
+collision_mask = 5
 script = ExtResource("1_nxc3c")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("PlaneMesh_tw7do")
-
-[node name="Area3D" type="Area3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_nph0p")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_v8nef")
+skeleton = NodePath("")
+
+[node name="Old" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("PlaneMesh_tw7do")
+skeleton = NodePath("")
