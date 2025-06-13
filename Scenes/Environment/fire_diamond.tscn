@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://bnf8ek5288hyi"]
+
+[ext_resource type="PackedScene" uid="uid://bw67cvuivemi" path="res://Assets/Model/diamond.glb" id="1_om668"]
+[ext_resource type="Script" uid="uid://ck6v6scvde4f4" path="res://Scenes/Environment/diamond.gd" id="2_4o2b6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8y68s"]
+albedo_color = Color(1, 0.0313726, 0.164706, 1)
+emission_enabled = true
+emission = Color(0.905269, 2.31028e-06, 4.81307e-07, 1)
+emission_energy_multiplier = 2.21
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xv4yd"]
+size = Vector3(0.515564, 0.514038, 0.612757)
+
+[node name="FireDiamond" instance=ExtResource("1_om668")]
+script = ExtResource("2_4o2b6")
+
+[node name="group1022280760" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_8y68s")
+
+[node name="Area3D" type="Area3D" parent="." index="1"]
+collision_layer = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00546265, -0.0531616, -0.00420475)
+shape = SubResource("BoxShape3D_xv4yd")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0063709, 0)
+light_color = Color(0.87451, 0.0470588, 0, 1)
+light_energy = 4.0
+omni_range = 4.0
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
