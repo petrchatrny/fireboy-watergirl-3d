@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://kgtyn5vo7nbx"]
 
-[ext_resource type="Script" uid="uid://mf5klf15v0yg" path="res://Scenes/player.gd" id="1_rpqav"]
+[ext_resource type="Script" uid="uid://mf5klf15v0yg" path="res://Scenes/Player/player.gd" id="1_rpqav"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qbkls"]
 
@@ -80,8 +80,11 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(19.7917, 0)
 
 [node name="Player" type="CharacterBody3D"]
+collision_mask = 3
 floor_snap_length = 0.0
 script = ExtResource("1_rpqav")
+speed = 4.5
+jump_velocity = 6.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -90,11 +93,21 @@ shape = SubResource("CapsuleShape3D_qbkls")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
 visible = false
 mesh = SubResource("CapsuleMesh_rpqav")
+skeleton = NodePath("")
+
+[node name="LiquidDetector" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LiquidDetector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_qbkls")
 
 [node name="Head" type="Node3D" parent="."]
 
 [node name="SpringArm3D" type="SpringArm3D" parent="Head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.977693, 0.0097003)
+collision_mask = 3
 spring_length = 5.0
 
 [node name="Camera3D" type="Camera3D" parent="Head/SpringArm3D"]
@@ -102,6 +115,7 @@ spring_length = 5.0
 [node name="StepCast" type="ShapeCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.576212, 0)
 shape = SubResource("CylinderShape3D_v0iea")
+collision_mask = 2
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_v0iea")
@@ -109,3 +123,5 @@ parameters/conditions/dead = false
 parameters/conditions/idle = false
 parameters/conditions/jumping = false
 parameters/conditions/walking = false
+
+[connection signal="area_entered" from="LiquidDetector" to="." method="_on_liquid_detector_area_entered"]
