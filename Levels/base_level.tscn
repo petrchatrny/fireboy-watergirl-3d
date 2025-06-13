@@ -1,26 +1,33 @@
-[gd_scene load_steps=10 format=3 uid="uid://4j08f75jksn7"]
+[gd_scene load_steps=8 format=3 uid="uid://4j08f75jksn7"]
 
 [ext_resource type="Script" uid="uid://cq8nce30at8mp" path="res://Levels/base_level.gd" id="1_ujkqx"]
-[ext_resource type="PackedScene" uid="uid://kgtyn5vo7nbx" path="res://Scenes/player.tscn" id="2_3vydx"]
+[ext_resource type="PackedScene" uid="uid://kgtyn5vo7nbx" path="res://Scenes/Player/player.tscn" id="2_3vydx"]
 [ext_resource type="Texture2D" uid="uid://bcrbhcufavkk1" path="res://Assets/HUD/diamond_icon.png" id="3_n4mxg"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_n4mxg"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_n4mxg"]
+sky_top_color = Color(0.352941, 0.45098, 0.556863, 1)
+sky_horizon_color = Color(0.490196, 0.701961, 0.827451, 1)
+sky_curve = 0.0375
+ground_bottom_color = Color(0.172549, 0.109804, 0.388235, 1)
+energy_multiplier = 0.1
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_he5fp"]
-seamless = true
-noise = SubResource("FastNoiseLite_n4mxg")
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ruyyf"]
-sky_top_color = Color(0.551886, 0.658162, 0.932644, 1)
-sky_horizon_color = Color(0.756572, 0.627619, 0.517938, 1)
-sky_cover = SubResource("NoiseTexture2D_he5fp")
-
-[sub_resource type="Sky" id="Sky_mykqc"]
-sky_material = SubResource("ProceduralSkyMaterial_ruyyf")
+[sub_resource type="Sky" id="Sky_ruyyf"]
+sky_material = SubResource("ProceduralSkyMaterial_n4mxg")
 
 [sub_resource type="Environment" id="Environment_m1e4t"]
 background_mode = 2
-sky = SubResource("Sky_mykqc")
+background_color = Color(0.00362283, 0.00560934, 0.123488, 1)
+background_energy_multiplier = 3.0
+sky = SubResource("Sky_ruyyf")
+ambient_light_source = 3
+ambient_light_color = Color(0.0392157, 0.0392157, 0.121569, 1)
+ambient_light_sky_contribution = 0.7
+ambient_light_energy = 0.05
+ssao_enabled = true
+glow_enabled = true
+fog_light_color = Color(0.304744, 0.308065, 0.617675, 1)
+fog_light_energy = 0.43
+fog_height_density = 0.01
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_j3xrb"]
 
@@ -140,7 +147,6 @@ size = Vector2i(540, 720)
 render_target_update_mode = 4
 
 [node name="Watergirl" parent="SplitScreen/LeftScreen/SubViewport" instance=ExtResource("2_3vydx")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 
 [node name="RightScreen" type="SubViewportContainer" parent="SplitScreen"]
 layout_mode = 1
@@ -159,7 +165,6 @@ size = Vector2i(540, 720)
 render_target_update_mode = 4
 
 [node name="Fireboy" parent="SplitScreen/RightScreen/SubViewport" instance=ExtResource("2_3vydx")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 is_watergirl = false
 
 [node name="ColorRect" type="ColorRect" parent="SplitScreen"]
@@ -180,8 +185,14 @@ color = Color(0, 0, 0, 1)
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="Scene" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Scene"]
 environment = SubResource("Environment_m1e4t")
 camera_attributes = SubResource("CameraAttributesPractical_j3xrb")
 
+[node name="Diamonds" type="Node3D" parent="Scene"]
+
+[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
+[connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,13 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://d0sf3k4e0oxkr"]
+[gd_scene load_steps=16 format=3 uid="uid://d0sf3k4e0oxkr"]
 
-[ext_resource type="PackedScene" uid="uid://bfccdulo15a1q" path="res://Scenes/Environment/wall.tscn" id="1_gnif3"]
-[ext_resource type="Script" uid="uid://b06ge8w53vxcu" path="res://Levels/test.gd" id="1_ovrsl"]
-[ext_resource type="PackedScene" uid="uid://cd7nxpyvy0j1j" path="res://Scenes/Environment/wall_corner.tscn" id="2_lwy2l"]
-[ext_resource type="PackedScene" uid="uid://bnf8ek5288hyi" path="res://Scenes/fire_diamond.tscn" id="3_lwy2l"]
-[ext_resource type="PackedScene" uid="uid://tcv1x6gfbx4l" path="res://Scenes/water_diamond.tscn" id="4_7pswh"]
-[ext_resource type="PackedScene" uid="uid://cw1yis6ggn8t2" path="res://Scenes/Environment/stairs.tscn" id="5_34bfm"]
-[ext_resource type="PackedScene" uid="uid://kgtyn5vo7nbx" path="res://Scenes/player.tscn" id="6_34bfm"]
-[ext_resource type="PackedScene" uid="uid://b26fsvh8h0we7" path="res://Scenes/Environment/wall_doorway.tscn" id="9_he5fp"]
+[ext_resource type="PackedScene" uid="uid://dlm4lmlv2iyyb" path="res://Scenes/Environment/wall.tscn" id="1_gnif3"]
+[ext_resource type="Script" uid="uid://b06ge8w53vxcu" path="res://Levels/test_level.gd" id="1_ovrsl"]
+[ext_resource type="PackedScene" path="res://Scenes/Environment/wall_corner.tscn" id="2_lwy2l"]
+[ext_resource type="PackedScene" uid="uid://bnf8ek5288hyi" path="res://Scenes/Environment/fire_diamond.tscn" id="3_lwy2l"]
+[ext_resource type="PackedScene" uid="uid://tcv1x6gfbx4l" path="res://Scenes/Environment/water_diamond.tscn" id="4_7pswh"]
+[ext_resource type="PackedScene" uid="uid://kgtyn5vo7nbx" path="res://Scenes/Player/player.tscn" id="6_34bfm"]
+[ext_resource type="PackedScene" uid="uid://7tuthrgr3twg" path="res://Scenes/Environment/ordinary_door.tscn" id="9_he5fp"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_4q20e"]
 size = Vector3(20, 1, 30)
@@ -67,9 +66,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, 0)
 
 [node name="Diamond2" parent="." instance=ExtResource("4_7pswh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.59402, 0.775792, -0.217402)
-
-[node name="Stairs" parent="." instance=ExtResource("5_34bfm")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.003, 0.5, 3.98155)
 
 [node name="Fireboy" parent="." instance=ExtResource("6_34bfm")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.675802, 2.21222, -0.998699)
