@@ -21,11 +21,24 @@ func _on_ready() -> void:
 	
 	# nastavení správného výchozího skóre
 	update_score()
+	
+	watergirl.player_died.connect(on_player_died)
+	fireboy.player_died.connect(on_player_died)
+
+
+#func _unhandled_input(event: InputEvent) -> void:
+	#if event is InputEventMouseMotion:
+		## Předpoklad: pravý hráč má myš, jinak přesměruj na levý
+		#$SplitScreen/RightScreen/SubViewport.input(event)
 
 func _unhandled_input(event: InputEvent) -> void:
+	if is_game_over:
+		return
+
 	if event is InputEventMouseMotion:
-		# Předpoklad: pravý hráč má myš, jinak přesměruj na levý
-		$SplitScreen/RightScreen/SubViewport.input(event)
+		var right_viewport := $SplitScreen/RightScreen/SubViewport
+		if right_viewport.get_child_count() > 0:
+			right_viewport.get_child(0).propagate_call("input", [event])
 
 func _on_timer_timeout() -> void:
 	# aktualizace proměnné
@@ -92,3 +105,20 @@ func update_score() -> void:
 func get_total_diamonds_count() -> int:
 	var diamond_container = $Scene/Diamonds
 	return diamond_container.get_child_count()
+
+func on_player_died() -> void:
+	if is_game_over:
+		return
+
+	is_game_over = true
+	show_game_over_screen()
+	
+
+func show_game_over_screen() -> void:
+	var game_over_scene = load("res://game_over.tscn").instantiate() as Control
+	
+	# Přidáme ji přímo do aktuální scény (např. jako overlay přes HUD)
+	get_tree().current_scene.add_child(game_over_scene)
+
+	# Umístíme doprostřed obrazovky
+	game_over_scene.position = get_viewport().get_visible_rect().size / 2

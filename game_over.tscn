@@ -1,0 +1,93 @@
+[gd_scene load_steps=7 format=3 uid="uid://c6jc8p8ndra8i"]
+
+[ext_resource type="Script" uid="uid://bgehx7qupko1g" path="res://game_over.gd" id="1_ccer4"]
+[ext_resource type="Texture2D" uid="uid://bo5r37epetumm" path="res://Assets/HUD/gameover-removebg-preview.png" id="2_8u835"]
+[ext_resource type="Texture2D" uid="uid://4f2dbynekgdp" path="res://Assets/HUD/black.png" id="3_ccer4"]
+[ext_resource type="Texture2D" uid="uid://djy8ga8kjdm1x" path="res://Assets/HUD/fireboy.png" id="4_ftari"]
+[ext_resource type="Texture2D" uid="uid://yvkrnfhkctd2" path="res://Assets/HUD/water.png" id="5_28vn7"]
+
+[sub_resource type="Theme" id="Theme_kvsu1"]
+
+[node name="GameOver" type="CenterContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_kvsu1")
+use_top_left = true
+script = ExtResource("1_ccer4")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+position = Vector2(-1, -4)
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(531, 372)
+scale = Vector2(15.2444, 8.98667)
+texture = ExtResource("3_ccer4")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+clip_contents = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -250.0
+offset_right = 244.0
+offset_bottom = 241.0
+grow_horizontal = 2
+
+[node name="Gameover-removebg-preview" type="Sprite2D" parent="CanvasLayer/MarginContainer"]
+position = Vector2(260.75, 110.5)
+scale = Vector2(0.750822, 0.640351)
+texture = ExtResource("2_8u835")
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer"]
+custom_minimum_size = Vector2(200, 200)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.0
+offset_top = -109.0
+offset_right = 102.0
+offset_bottom = 91.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+text = "Play again"
+text_overrun_behavior = 2
+clip_text = true
+
+[node name="Button2" type="Button" parent="CanvasLayer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+text = "Main menu"
+text_overrun_behavior = 2
+clip_text = true
+
+[node name="Fireboy" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(288, 392)
+scale = Vector2(0.648594, 0.576)
+texture = ExtResource("4_ftari")
+
+[node name="Water" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(803, 363)
+scale = Vector2(0.654, 0.667671)
+texture = ExtResource("5_28vn7")
