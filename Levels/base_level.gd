@@ -1,5 +1,7 @@
 extends Node
 
+@export var background_music: AudioStream
+
 var passed_seconds_count : int = 0
 var total_diamonds_count: int = 0
 var collected_diamonds_count: int = 0
@@ -10,8 +12,12 @@ var is_winner: bool = false
 
 @onready var watergirl = $SplitScreen/LeftScreen/SubViewport/Watergirl
 @onready var fireboy = $SplitScreen/RightScreen/SubViewport/Fireboy
+@onready var music_player := $MusicPlayer
 
 func _on_ready() -> void:
+	# přehrávání ambientní hudby
+	play_music_in_loop()
+	
 	# na základě připojených zařízení k PC vyhodnotí ovládání hry
 	setup_peripherals()
 	
@@ -59,7 +65,6 @@ func _on_diamond_collected():
 	update_score()
 	
 func _on_finish_door_toggled(is_open: bool, door: Node3D) -> void:
-	print("Otevřeny cílové dveře")
 	if door.accepted_player_type == "fireboy":
 		is_fireboy_finish_door_open = is_open
 	elif door.accepted_player_type == "watergirl":
@@ -68,6 +73,12 @@ func _on_finish_door_toggled(is_open: bool, door: Node3D) -> void:
 	if is_fireboy_finish_door_open and  is_watergirl_finish_door_open:
 		is_winner = true
 		is_game_over = true
+		
+		# přehrát zvuk výhry
+		music_player.stop()
+		music_player.stream = load("res://Assets/Audio/game_won.ogg")
+		music_player.stream.loop = false
+		music_player.play()
 		
 		# TODO uložit výsledky na disk: uběhnutý čas a počet posbíraných diamantů
 		
@@ -141,10 +152,18 @@ func get_total_diamonds_count() -> int:
 func on_player_died() -> void:
 	if is_game_over:
 		return
+		
+	# vyčkat než se přehraje anime umírání
+	await get_tree().create_timer(1.5).timeout
+
+	# přehrát zvuk prohry
+	music_player.stop()
+	music_player.stream = load("res://Assets/Audio/game_lost.ogg")
+	music_player.stream.loop = false
+	music_player.play()
 
 	is_game_over = true
 	show_game_over_screen()
-	
 
 func show_game_over_screen() -> void:
 	var game_over_scene = load("res://game_over.tscn").instantiate() as Control
@@ -154,3 +173,9 @@ func show_game_over_screen() -> void:
 
 	# Umístíme doprostřed obrazovky
 	game_over_scene.position = get_viewport().get_visible_rect().size / 2
+
+func play_music_in_loop():
+	if background_music:
+		music_player.stream = background_music
+		music_player.stream.loop = true
+		music_player.play()

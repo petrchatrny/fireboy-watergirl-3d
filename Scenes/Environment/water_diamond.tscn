@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://tcv1x6gfbx4l"]
+[gd_scene load_steps=6 format=3 uid="uid://tcv1x6gfbx4l"]
 
 [ext_resource type="PackedScene" uid="uid://bw67cvuivemi" path="res://Assets/Model/diamond.glb" id="1_cbv2l"]
 [ext_resource type="Script" uid="uid://ck6v6scvde4f4" path="res://Scenes/Environment/diamond.gd" id="2_l5l0d"]
+[ext_resource type="AudioStream" uid="uid://63p3b2i2c7dx" path="res://Assets/Audio/collect_diamond_sound.ogg" id="3_atupf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cbv2l"]
 albedo_color = Color(0.384077, 0.264572, 1, 1)
@@ -19,6 +20,12 @@ allowed_for_water_girl = true
 [node name="group1022280760" parent="." index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_cbv2l")
 
+[node name="OmniLight3D" type="OmniLight3D" parent="group1022280760" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0063709, 0)
+light_color = Color(0.373591, 0.567476, 1, 1)
+light_energy = 4.0
+omni_range = 4.0
+
 [node name="Area3D" type="Area3D" parent="." index="1"]
 collision_layer = 8
 
@@ -26,10 +33,7 @@ collision_layer = 8
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00546265, -0.0531616, -0.00420475)
 shape = SubResource("BoxShape3D_xv4yd")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="." index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0063709, 0)
-light_color = Color(0.373591, 0.567476, 1, 1)
-light_energy = 4.0
-omni_range = 4.0
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="2"]
+stream = ExtResource("3_atupf")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

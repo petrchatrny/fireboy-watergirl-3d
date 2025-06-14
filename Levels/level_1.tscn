@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://bpui4hbeh0bpw"]
+[gd_scene load_steps=17 format=3 uid="uid://bpui4hbeh0bpw"]
 
 [ext_resource type="PackedScene" uid="uid://4j08f75jksn7" path="res://Levels/base_level.tscn" id="1_adtx1"]
 [ext_resource type="Script" uid="uid://c5okbkuy1yche" path="res://Levels/level_1.gd" id="2_0sdw8"]
+[ext_resource type="AudioStream" uid="uid://brnn0jpvch257" path="res://Assets/Audio/ambient_music.ogg" id="3_2hkqn"]
 [ext_resource type="MeshLibrary" uid="uid://c813du6ewh6lj" path="res://Scenes/mesh_library.tres" id="3_sb8gj"]
 [ext_resource type="PackedScene" uid="uid://x710s8hwygrm" path="res://Scenes/Environment/acid.tscn" id="4_v1ngs"]
 [ext_resource type="PackedScene" uid="uid://blsb4oj0d0svv" path="res://Scenes/Environment/water.tscn" id="5_44xe1"]
@@ -21,6 +22,7 @@ size = Vector3(1, 1, 0.733276)
 
 [node name="Level 1" instance=ExtResource("1_adtx1")]
 script = ExtResource("2_0sdw8")
+background_music = ExtResource("3_2hkqn")
 
 [node name="Watergirl" parent="SplitScreen/LeftScreen/SubViewport" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, 2)
