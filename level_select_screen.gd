@@ -7,7 +7,7 @@ func _ready() -> void:
 	
 	if v_box_container.get_child_count() > 0:
 		v_box_container.get_child(0).grab_focus
-
+		
 
 func fill_levels() -> void:
 	var level_paths = DirAccess.get_files_at(level_folder_path)

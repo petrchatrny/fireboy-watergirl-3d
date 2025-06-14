@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://de2nf6t6qd4rx"]
+[gd_scene load_steps=8 format=3 uid="uid://de2nf6t6qd4rx"]
 
 [ext_resource type="Script" uid="uid://dlai8c2xxai3g" path="res://level_select_screen.gd" id="1_oumdo"]
+[ext_resource type="Texture2D" uid="uid://ow7mswmofj32" path="res://Assets/HUD/Title.webp" id="2_1t76i"]
+[ext_resource type="Texture2D" uid="uid://4f2dbynekgdp" path="res://Assets/HUD/black.png" id="3_2stg7"]
+[ext_resource type="Texture2D" uid="uid://djy8ga8kjdm1x" path="res://Assets/HUD/fireboy.png" id="4_rikjy"]
+[ext_resource type="Texture2D" uid="uid://yvkrnfhkctd2" path="res://Assets/HUD/water.png" id="5_2stg7"]
+[ext_resource type="Texture2D" uid="uid://s1x4ohvj2npf" path="res://Assets/HUD/images-removebg-preview.png" id="6_2stg7"]
+
+[sub_resource type="Theme" id="Theme_kvsu1"]
 
 [node name="LevelSelectScreen" type="CenterContainer"]
 anchors_preset = 15
@@ -12,7 +19,33 @@ offset_right = 1.0
 offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_kvsu1")
 script = ExtResource("1_oumdo")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+clip_contents = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -250.0
+offset_right = 250.0
+offset_bottom = 200.0
+grow_horizontal = 2
+
+[node name="Title" type="Sprite2D" parent="CanvasLayer/MarginContainer"]
+position = Vector2(252, 101)
+scale = Vector2(0.598837, 0.588889)
+texture = ExtResource("2_1t76i")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+position = Vector2(-1, -4)
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(534, 285.5)
+scale = Vector2(12.3733, 6.2)
+texture = ExtResource("3_2stg7")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 custom_minimum_size = Vector2(256, 320)
@@ -30,3 +63,24 @@ theme_override_constants/margin_right = 8
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="Fireboy" type="Sprite2D" parent="."]
+position = Vector2(260, 299)
+scale = Vector2(0.672691, 0.622)
+texture = ExtResource("4_rikjy")
+
+[node name="Water" type="Sprite2D" parent="."]
+position = Vector2(806, 284)
+scale = Vector2(0.664, 0.668675)
+texture = ExtResource("5_2stg7")
+
+[node name="Images-removebg-preview" type="Sprite2D" parent="."]
+position = Vector2(786.75, 443.25)
+scale = Vector2(2.65556, 2.39333)
+texture = ExtResource("6_2stg7")
+
+[node name="Images-removebg-preview2" type="Sprite2D" parent="."]
+position = Vector2(301.25, 444)
+scale = Vector2(2.66889, 2.39333)
+texture = ExtResource("6_2stg7")
+flip_h = true
