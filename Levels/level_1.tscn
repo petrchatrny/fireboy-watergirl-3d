@@ -9,8 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://skgs00m22e02" path="res://Scenes/Environment/torch.tscn" id="7_tkcpb"]
 [ext_resource type="PackedScene" uid="uid://bnf8ek5288hyi" path="res://Scenes/Environment/fire_diamond.tscn" id="8_hsdth"]
 [ext_resource type="PackedScene" uid="uid://tcv1x6gfbx4l" path="res://Scenes/Environment/water_diamond.tscn" id="9_6irkh"]
-[ext_resource type="PackedScene" uid="uid://7tuthrgr3twg" path="res://Scenes/Environment/ordinary_door.tscn" id="10_f4pg2"]
-[ext_resource type="PackedScene" uid="uid://cl87cfsvkgomg" path="res://Scenes/Environment/pressure_plate.tscn" id="11_62b6n"]
+[ext_resource type="PackedScene" uid="uid://7tuthrgr3twg" path="res://Scenes/Environment/lockable_door.tscn" id="10_f4pg2"]
+[ext_resource type="PackedScene" uid="uid://bl6pvp3doisa2" path="res://Scenes/Environment/pressure_plate.tscn" id="11_62b6n"]
 [ext_resource type="PackedScene" uid="uid://6d4po25kgf1q" path="res://Scenes/Environment/watergirl_finish_door.tscn" id="12_rs4xw"]
 [ext_resource type="PackedScene" uid="uid://1jp3bsjtant5" path="res://Scenes/Environment/fireboy_finish_door.tscn" id="13_lk57d"]
 
@@ -23,10 +23,10 @@ size = Vector3(1, 1, 0.733276)
 script = ExtResource("2_0sdw8")
 
 [node name="Watergirl" parent="SplitScreen/LeftScreen/SubViewport" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.936, 1, 2.129)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, 2)
 
 [node name="Fireboy" parent="SplitScreen/RightScreen/SubViewport" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.98003, 1, 2.94692)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 2)
 
 [node name="Floor" type="GridMap" parent="Scene" index="1"]
 mesh_library = ExtResource("3_sb8gj")
@@ -152,7 +152,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.6487, 2.59537, 21.2538)
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3.39302, 2.59537, 30.7125)
 
 [node name="Torch8" parent="Scene/Torches" index="8" instance=ExtResource("7_tkcpb")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -11.7567, 2.59537, 30.7125)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -13.7449, 2.59537, 30.7125)
 
 [node name="Torch10" parent="Scene/Torches" index="9" instance=ExtResource("7_tkcpb")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -15.6793, 2.59537, 12.7278)
@@ -199,26 +199,56 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.902, 2.8, 17)
 
 [node name="Controls" type="Node3D" parent="Scene" index="10"]
 
-[node name="WallDoorway" parent="Scene/Controls" index="0" instance=ExtResource("10_f4pg2")]
+[node name="LockableDoor" parent="Scene/Controls" index="0" instance=ExtResource("10_f4pg2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1, 21)
 
-[node name="WallDoorway2" parent="Scene/Controls" index="1" instance=ExtResource("10_f4pg2")]
+[node name="LockableDoor2" parent="Scene/Controls" index="1" instance=ExtResource("10_f4pg2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 1, 21)
 
-[node name="WallDoorway5" parent="Scene/Controls" index="2" instance=ExtResource("10_f4pg2")]
+[node name="LockableDoor3" parent="Scene/Controls" index="2" instance=ExtResource("10_f4pg2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 1, 13)
 
-[node name="WallDoorway6" parent="Scene/Controls" index="3" instance=ExtResource("10_f4pg2")]
+[node name="LockableDoor4" parent="Scene/Controls" index="3" instance=ExtResource("10_f4pg2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1, 13)
 
 [node name="PressurePlate" parent="Scene/Controls" index="4" instance=ExtResource("11_62b6n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.3582, 0.78414, 28.6815)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2017, 1.05, 29.2853)
 
 [node name="PressurePlate2" parent="Scene/Controls" index="5" instance=ExtResource("11_62b6n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.7245, 0.78414, 6.44413)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.724, 1.05, 6.444)
 
-[node name="FireboyFinishDoor" parent="Scene/Controls" index="6" instance=ExtResource("13_lk57d")]
+[node name="Use W, A, S, D to move Watergirl" type="Label3D" parent="Scene" index="11"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.163, 2.5, 7.7)
+text = "Use W, A, S, D to move Watergirl.
+Jump with space."
+
+[node name="Use the Arrow keys to move Fireboy" type="Label3D" parent="Scene" index="12"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.107, 2.5, 7.7)
+text = "Use the Arrow keys to move Fireboy.
+Jump with left mouse button."
+
+[node name="Never mix fire and water" type="Label3D" parent="Scene" index="13"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5.157, 2.5, 12.8261)
+text = "Never mix fire and water!"
+
+[node name="Green goo hurts them both" type="Label3D" parent="Scene" index="14"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.41197, 2.60935, 25.3882)
+text = "Green goo hurts them both"
+
+[node name="Buttons must be hold to work" type="Label3D" parent="Scene" index="15"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -11.1306, 3.13897, 29.7447)
+text = "Buttons must be held to work"
+
+[node name="Buttons must be hold to work2" type="Label3D" parent="Scene" index="16"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20.5527, 3.79879, 8.97308)
+text = "Open the finish doors by standing
+in front of them"
+
+[node name="FireboyFinishDoor" parent="Scene/FinishDoors" index="0" instance=ExtResource("13_lk57d")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -23, 1, 7)
 
-[node name="WatergirlFinishDoor" parent="Scene/Controls" index="7" instance=ExtResource("12_rs4xw")]
+[node name="WatergirlFinishDoor" parent="Scene/FinishDoors" index="1" instance=ExtResource("12_rs4xw")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -23, 1, 10.9623)
+
+[connection signal="pressure_plate_toggled" from="Scene/Controls/PressurePlate" to="." method="_handle_button_toggled"]
+[connection signal="pressure_plate_toggled" from="Scene/Controls/PressurePlate2" to="." method="_handle_button_toggled"]

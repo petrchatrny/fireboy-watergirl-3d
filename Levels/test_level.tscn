@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bnf8ek5288hyi" path="res://Scenes/Environment/fire_diamond.tscn" id="3_lwy2l"]
 [ext_resource type="PackedScene" uid="uid://tcv1x6gfbx4l" path="res://Scenes/Environment/water_diamond.tscn" id="4_7pswh"]
 [ext_resource type="PackedScene" uid="uid://kgtyn5vo7nbx" path="res://Scenes/Player/player.tscn" id="6_34bfm"]
-[ext_resource type="PackedScene" uid="uid://7tuthrgr3twg" path="res://Scenes/Environment/ordinary_door.tscn" id="9_he5fp"]
+[ext_resource type="PackedScene" uid="uid://7tuthrgr3twg" path="res://Scenes/Environment/lockable_door.tscn" id="9_he5fp"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_4q20e"]
 size = Vector3(20, 1, 30)
