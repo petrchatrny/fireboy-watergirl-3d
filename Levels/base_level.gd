@@ -3,6 +3,8 @@ extends Node
 var passed_seconds_count : int = 0
 var total_diamonds_count: int = 0
 var collected_diamonds_count: int = 0
+var is_fireboy_finish_door_open: bool = false
+var is_watergirl_finish_door_open: bool = false
 var is_game_over: bool = false
 var is_winner: bool = false
 
@@ -15,6 +17,9 @@ func _on_ready() -> void:
 	
 	# připojení signálů z diamantů
 	connect_diamond_signals()
+	
+	# připojení signálů z cílových dveří
+	connect_finish_doors_signals()
 	
 	# uložení výchozího počtu diamantů do proměnné
 	total_diamonds_count = get_total_diamonds_count()
@@ -52,6 +57,21 @@ func _on_timer_timeout() -> void:
 func _on_diamond_collected():
 	collected_diamonds_count += 1
 	update_score()
+	
+func _on_finish_door_toggled(is_open: bool, door: Node3D) -> void:
+	print("Otevřeny cílové dveře")
+	if door.accepted_player_type == "fireboy":
+		is_fireboy_finish_door_open = is_open
+	elif door.accepted_player_type == "watergirl":
+		is_watergirl_finish_door_open = is_open
+	
+	if is_fireboy_finish_door_open and  is_watergirl_finish_door_open:
+		is_winner = true
+		is_game_over = true
+		
+		# TODO uložit výsledky na disk: uběhnutý čas a počet posbíraných diamantů
+		
+		show_game_over_screen()
 
 # ------------------------------------------------------------------------------
 
@@ -95,6 +115,18 @@ func connect_diamond_signals():
 			diamond.connect("diamond_collected", Callable(self, "_on_diamond_collected"))
 		else:
 			print("⚠️ Uzel ", diamond.name, " nemá signál 'collected'")
+
+func connect_finish_doors_signals():
+	var finish_doors_container = $Scene/FinishDoors
+	for door in finish_doors_container.get_children():
+		var hitbox = door.get_node_or_null("FinishHitBox")
+		if hitbox:
+			if hitbox.has_signal("finish_door_toggled"):
+				hitbox.connect("finish_door_toggled", Callable(self, "_on_finish_door_toggled"))
+			else:
+				print("⚠️ Hitbox u dveří ", door.name, " nemá signál 'finish_door_toggled'")
+		else:
+			print("⚠️ Dveře ", door.name, " nemají potomek 'FinishHitBox'")
 
 # aktualizuje text skóre v HUD
 func update_score() -> void:
