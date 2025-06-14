@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://7tuthrgr3twg"]
-
-[ext_resource type="PackedScene" uid="uid://d2ixfckt0fw56" path="res://Assets/Model/wall_doorway.glb" id="1_x37tv"]
-
-[node name="WallDoorway" instance=ExtResource("1_x37tv")]

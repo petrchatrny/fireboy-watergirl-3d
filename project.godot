@@ -15,10 +15,22 @@ run/main_scene="uid://de2nf6t6qd4rx"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout=""
+
 [display]
 
 window/size/viewport_width=1080
 window/size/viewport_height=720
+
+[file_customization]
+
+folder_colors={
+"res://Assets/": "orange",
+"res://Levels/": "blue",
+"res://Scenes/": "green"
+}
 
 [input]
 
