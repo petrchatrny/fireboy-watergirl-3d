@@ -23,7 +23,7 @@ var is_dead = false
 # rotace kamery
 var yaw = 0.0
 var pitch = 0.0
-var sensitivity = 0.003
+var sensitivity = 0.005
 
 # části těla
 const WATERGIRL_MESH_PATH := "res://Scenes/Player/watergirl_mesh.tscn"
@@ -89,11 +89,26 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
-#    
+
+	# pohyb kamerou pomocí ovladače (musí být ve fyzice kvůli plynulosti)
+	if controller_id >= 0:
+		var rx = Input.get_joy_axis(controller_id, JOY_AXIS_RIGHT_X)
+		var ry = Input.get_joy_axis(controller_id, JOY_AXIS_RIGHT_Y)
+
+		# kameru změníme pouze pokud je páčka ovladače vychýlená výrazně, když
+		# je páčka ve středu, generuje taky slabý signál a tomu se říká deadzone
+		var deadzone = 0.15
+		if abs(rx) > deadzone:
+			yaw -= rx * sensitivity * 10
+		if abs(ry) > deadzone:
+			pitch -= ry * sensitivity * 10
+		
+		rotate_camera()
+	
 	# animace pohybů
 	$AnimationTree.set("parameters/conditions/idle", input_direction == Vector2.ZERO and is_grounded())
 	$AnimationTree.set("parameters/conditions/walking", input_direction != Vector2.ZERO and is_grounded())
-	$AnimationTree.set("parameters/conditions/jumping", not is_grounded())
+	$AnimationTree.set("parameters/conditions/jumping", not is_grounded() and velocity.y > 0)
 	$AnimationTree.set("parameters/conditions/dead", is_dead)
 
 	if not is_dead:
@@ -102,19 +117,14 @@ func _physics_process(delta: float) -> void:
 
 # zachytávání vstupů na periferiích
 func _input(event: InputEvent) -> void:
-	# reakce na pohyb myší
-	if controller_id == -1 and event is InputEventMouseMotion:
+	# pohyb myší - pohyb s kamerou
+	if use_mouse and event is InputEventMouseMotion:
 		yaw -= event.relative.x * sensitivity
 		pitch -= event.relative.y * sensitivity
 	
-	# reakce na pohyb pravého joysticku 
-	elif controller_id >= 0:
-		yaw -= Input.get_joy_axis(controller_id, JOY_AXIS_RIGHT_X) * sensitivity * 10
-		pitch -= Input.get_joy_axis(controller_id, JOY_AXIS_RIGHT_Y) * sensitivity * 10
-	
-	rotate_camera()
+		rotate_camera()
 
-# kontrola kolize s objekty
+# kontrola kolize s tekutinami
 func _on_liquid_detector_area_entered(area: Area3D) -> void:
 	if not area.has_method("get_liquid_type"):
 		return
@@ -129,7 +139,7 @@ func move(delta: float):
 	step_cast.global_position.z = global_position.z + velocity.z * delta
 	
 	if is_grounded():
-		step_cast.target_position.y = -1.0
+		step_cast.target_position.y = -1
 	else:
 		step_cast.target_position.y = -0.45
 	
@@ -143,8 +153,7 @@ func move(delta: float):
 	if !result:
 		step_cast.force_shapecast_update()
 	
-	step_cast.force_shapecast_update()
-	if step_cast.is_colliding() && velocity.y <= 0:
+	if step_cast.is_colliding() && velocity.y <= 0 and !result:
 		global_position.y = step_cast.get_collision_point(0).y
 		velocity.y = 0
 		grounded = true
