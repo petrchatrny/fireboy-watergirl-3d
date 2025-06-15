@@ -142,6 +142,7 @@ grow_vertical = 2
 stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="SplitScreen/LeftScreen"]
+handle_input_locally = false
 audio_listener_enable_3d = true
 size = Vector2i(540, 720)
 render_target_update_mode = 4
@@ -160,6 +161,7 @@ stretch = true
 mouse_target = true
 
 [node name="SubViewport" type="SubViewport" parent="SplitScreen/RightScreen"]
+handle_input_locally = false
 audio_listener_enable_3d = true
 size = Vector2i(540, 720)
 render_target_update_mode = 4

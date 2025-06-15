@@ -9,6 +9,7 @@ var is_fireboy_finish_door_open: bool = false
 var is_watergirl_finish_door_open: bool = false
 var is_game_over: bool = false
 var is_winner: bool = false
+var current_level_name: String = ""
 
 @onready var watergirl = $SplitScreen/LeftScreen/SubViewport/Watergirl
 @onready var fireboy = $SplitScreen/RightScreen/SubViewport/Fireboy
@@ -29,7 +30,8 @@ func _on_ready() -> void:
 	
 	# uložení výchozího počtu diamantů do proměnné
 	total_diamonds_count = get_total_diamonds_count()
-	
+	current_level_name = get_tree().current_scene.scene_file_path.get_file().get_basename()
+
 	# nastavení správného výchozího skóre
 	update_score()
 	
@@ -166,6 +168,7 @@ func on_player_died() -> void:
 	show_game_over_screen()
 
 func show_game_over_screen() -> void:
+	save_game_result_to_file()
 	var game_over_scene = load("res://game_over.tscn").instantiate() as Control
 	
 	# Přidáme ji přímo do aktuální scény (např. jako overlay přes HUD)
@@ -179,3 +182,64 @@ func play_music_in_loop():
 		music_player.stream = background_music
 		music_player.stream.loop = true
 		music_player.play()
+	
+
+func create_game_result() -> Dictionary:
+	return {
+		"timestamp": Time.get_datetime_string_from_system(),
+		"level": current_level_name,
+		"seconds": passed_seconds_count,
+		"diamonds_collected": collected_diamonds_count,
+		"diamonds_total": total_diamonds_count,
+		"win": is_winner
+	}
+
+func save_game_result_to_file() -> void:
+	var file_path = "user://game_results.json"
+	var game_result = create_game_result()
+	var results: Dictionary = {}
+
+	# Pokud soubor existuje, načti uložené výsledky
+	if FileAccess.file_exists(file_path):
+		var file = FileAccess.open(file_path, FileAccess.READ)
+		if file:
+			var text = file.get_as_text()
+			file.close()
+			
+			if text != "":
+				var json = JSON.new()
+				var error = json.parse(text)
+				if error == OK and typeof(json.data) == TYPE_DICTIONARY:
+					results = json.data
+				else:
+					print("⚠️ Nepodařilo se načíst výsledky nebo nejsou ve správném formátu.")
+
+	# Porovnej a případně přepiš výsledek pro daný level
+	var level_id = game_result["level"]
+	var prev_result = results.get(level_id, null)
+
+	if prev_result == null or is_result_better(game_result, prev_result):
+		results[level_id] = game_result
+		print("✅ Nový výsledek uložen pro level:", level_id)
+	else:
+		print("❌ Výsledek není lepší – neuloženo.")
+
+	# Ulož zpět
+	var file = FileAccess.open(file_path, FileAccess.WRITE)
+	if file:
+		file.store_string(JSON.stringify(results, "\t"))  # pretty-printed
+		file.close()
+
+func is_result_better(new_result: Dictionary, old_result: Dictionary) -> bool:
+	var new_diamonds = new_result.get("diamonds_collected", 0)
+	var old_diamonds = old_result.get("diamonds_collected", 0)
+
+	if new_diamonds > old_diamonds:
+		return true
+	elif new_diamonds < old_diamonds:
+		return false
+	
+	# Pokud diamanty jsou stejné, rozhoduje čas
+	var new_time = new_result.get("seconds", 99999)
+	var old_time = old_result.get("seconds", 99999)
+	return new_time < old_time
