@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://mf5klf15v0yg" path="res://Scenes/Player/player.gd" id="1_rpqav"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qbkls"]
+radius = 0.412342
+height = 1.94111
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_rpqav"]
 
@@ -113,9 +115,11 @@ spring_length = 5.0
 [node name="Camera3D" type="Camera3D" parent="Head/SpringArm3D"]
 
 [node name="StepCast" type="ShapeCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.576212, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.546619, 0)
+enabled = false
 shape = SubResource("CylinderShape3D_v0iea")
-collision_mask = 2
+target_position = Vector3(0, -0.8, 0)
+collision_mask = 16
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_v0iea")

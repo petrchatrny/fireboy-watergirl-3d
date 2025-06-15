@@ -1452,6 +1452,7 @@ skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="floor_tile_large"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1)
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="floor_tile_large/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1)
@@ -1463,6 +1464,7 @@ mesh = SubResource("ArrayMesh_1vyrb")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="floor_tile_large_rocks"]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="floor_tile_large_rocks/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_spc4v")
@@ -1473,6 +1475,7 @@ mesh = SubResource("ArrayMesh_ln3me")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="floor_tile_big_grate_open"]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="floor_tile_big_grate_open/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_rtm2v")
@@ -1483,6 +1486,7 @@ mesh = SubResource("ArrayMesh_8rhuu")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="floor_tile_extralarge_grates_open"]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="floor_tile_extralarge_grates_open/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_rs3wg")
@@ -1493,6 +1497,7 @@ mesh = SubResource("ArrayMesh_eoi4n")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="floor_tile_small"]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="floor_tile_small/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_b5tcn")
@@ -1503,6 +1508,7 @@ mesh = SubResource("ArrayMesh_ivock")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="floor_tile_small_broken_A"]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="floor_tile_small_broken_A/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_usjp2")
@@ -1513,6 +1519,7 @@ mesh = SubResource("ArrayMesh_0ghpb")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="floor_tile_small_broken_B"]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="floor_tile_small_broken_B/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_y26vr")
@@ -1523,6 +1530,7 @@ mesh = SubResource("ArrayMesh_fhqfw")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="floor_tile_small_weeds_A"]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="floor_tile_small_weeds_A/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_7owtn")
@@ -1533,6 +1541,7 @@ mesh = SubResource("ArrayMesh_am2as")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="floor_tile_small_weeds_B"]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="floor_tile_small_weeds_B/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_i7646")
@@ -1543,6 +1552,7 @@ mesh = SubResource("ArrayMesh_mne1t")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="floor_tile_small_decorated"]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="floor_tile_small_decorated/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_1nggr")
@@ -1553,6 +1563,8 @@ mesh = SubResource("ArrayMesh_lji1t")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="stairs_walled"]
+collision_layer = 16
+collision_mask = 17
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="stairs_walled/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_fxdbg")
@@ -1563,6 +1575,7 @@ mesh = SubResource("ArrayMesh_eixf2")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="wall"]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="wall/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_c8pwm")
@@ -1573,6 +1586,7 @@ mesh = SubResource("ArrayMesh_t0h1d")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="wall_arched"]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="wall_arched/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_ws2mo")
@@ -1583,6 +1597,7 @@ mesh = SubResource("ArrayMesh_yu0es")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="wall_archedwindow_gated"]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="wall_archedwindow_gated/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_ro60e")
@@ -1593,6 +1608,7 @@ mesh = SubResource("ArrayMesh_64jvx")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="wall_archedwindow_gated_scaffold"]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="wall_archedwindow_gated_scaffold/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_sl40c")
@@ -1603,6 +1619,7 @@ mesh = SubResource("ArrayMesh_jpq3d")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="wall_broken"]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="wall_broken/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_sx2qb")
@@ -1613,6 +1630,7 @@ mesh = SubResource("ArrayMesh_05344")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="wall_gated"]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="wall_gated/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_i0w1k")
@@ -1623,6 +1641,7 @@ mesh = SubResource("ArrayMesh_4kdeu")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="wall_scaffold"]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="wall_scaffold/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_tum8i")
@@ -1633,6 +1652,7 @@ mesh = SubResource("ArrayMesh_5tfgt")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="wall_shelves"]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="wall_shelves/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_u6jyp")
@@ -1643,6 +1663,7 @@ mesh = SubResource("ArrayMesh_00sfh")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="wall_corner_small"]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="wall_corner_small/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_002pd")
@@ -1653,6 +1674,7 @@ mesh = SubResource("ArrayMesh_8wblq")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="wall_corner_scaffold"]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="wall_corner_scaffold/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_6s0ie")
@@ -1663,6 +1685,7 @@ mesh = SubResource("ArrayMesh_t2ipp")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="wall_corner_gated"]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="wall_corner_gated/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_7lgda")
@@ -1673,6 +1696,7 @@ mesh = SubResource("ArrayMesh_mmqox")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="wall_half"]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="wall_half/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_guppq")
@@ -1683,6 +1707,7 @@ mesh = SubResource("ArrayMesh_2u77n")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="wall_half_endcap"]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="wall_half_endcap/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_y771y")
@@ -1693,6 +1718,7 @@ mesh = SubResource("ArrayMesh_x0ltl")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="wall_half_endcap_sloped"]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="wall_half_endcap_sloped/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_dm7f8")
@@ -1703,6 +1729,7 @@ mesh = SubResource("ArrayMesh_poty0")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="wall_pillar"]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="wall_pillar/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_k8kas")
@@ -1713,6 +1740,7 @@ mesh = SubResource("ArrayMesh_cg6xw")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="pillar"]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="pillar/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_ifxgm")
@@ -1743,6 +1771,7 @@ mesh = SubResource("ArrayMesh_tehud")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="box_stacked"]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="box_stacked/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_31a80")
@@ -1758,6 +1787,7 @@ mesh = SubResource("ArrayMesh_8ng7f")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="bed_decorated"]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="bed_decorated/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_pn41v")
@@ -1768,6 +1798,7 @@ mesh = SubResource("ArrayMesh_yo3va")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="bed_frame"]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="bed_frame/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_awyqj")
