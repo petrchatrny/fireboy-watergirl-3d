@@ -8,7 +8,6 @@ var collected_diamonds_count: int = 0
 var is_fireboy_finish_door_open: bool = false
 var is_watergirl_finish_door_open: bool = false
 var is_game_over: bool = false
-var is_winner: bool = false
 var current_level_name: String = ""
 
 @onready var watergirl = $SplitScreen/LeftScreen/SubViewport/Watergirl
@@ -72,9 +71,11 @@ func _on_finish_door_toggled(is_open: bool, door: Node3D) -> void:
 	elif door.accepted_player_type == "watergirl":
 		is_watergirl_finish_door_open = is_open
 	
-	if is_fireboy_finish_door_open and  is_watergirl_finish_door_open:
-		is_winner = true
+	if is_fireboy_finish_door_open and is_watergirl_finish_door_open:
 		is_game_over = true
+
+		# Uložení pouze při výhře
+		save_game_result_to_file()
 		
 		# přehrát zvuk výhry
 		music_player.stop()
@@ -82,9 +83,8 @@ func _on_finish_door_toggled(is_open: bool, door: Node3D) -> void:
 		music_player.stream.loop = false
 		music_player.play()
 		
-		# TODO uložit výsledky na disk: uběhnutý čas a počet posbíraných diamantů
-		
 		show_game_over_screen()
+
 
 # ------------------------------------------------------------------------------
 
@@ -168,7 +168,6 @@ func on_player_died() -> void:
 	show_game_over_screen()
 
 func show_game_over_screen() -> void:
-	save_game_result_to_file()
 	var game_over_scene = load("res://game_over.tscn").instantiate() as Control
 	
 	# Přidáme ji přímo do aktuální scény (např. jako overlay přes HUD)
@@ -191,7 +190,6 @@ func create_game_result() -> Dictionary:
 		"seconds": passed_seconds_count,
 		"diamonds_collected": collected_diamonds_count,
 		"diamonds_total": total_diamonds_count,
-		"win": is_winner
 	}
 
 func save_game_result_to_file() -> void:

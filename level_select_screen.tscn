@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://de2nf6t6qd4rx"]
+[gd_scene load_steps=9 format=3 uid="uid://de2nf6t6qd4rx"]
 
 [ext_resource type="Script" uid="uid://dlai8c2xxai3g" path="res://level_select_screen.gd" id="1_oumdo"]
 [ext_resource type="Texture2D" uid="uid://ow7mswmofj32" path="res://Assets/HUD/Title.webp" id="2_1t76i"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://s1x4ohvj2npf" path="res://Assets/HUD/images-removebg-preview.png" id="6_2stg7"]
 
 [sub_resource type="Theme" id="Theme_kvsu1"]
+
+[sub_resource type="Theme" id="Theme_2stg7"]
 
 [node name="LevelSelectScreen" type="CenterContainer"]
 anchors_preset = 15
@@ -24,6 +26,54 @@ script = ExtResource("1_oumdo")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="MarginContainer3" type="MarginContainer" parent="CanvasLayer"]
+clip_contents = true
+custom_minimum_size = Vector2(300, 100)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 6
+size_flags_vertical = 8
+
+[node name="PopupPanel" type="PopupPanel" parent="CanvasLayer/MarginContainer3"]
+mode = 3
+title = "Best Results"
+size = Vector2i(208, 85)
+theme = SubResource("Theme_2stg7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer3/PopupPanel"]
+clip_contents = true
+custom_minimum_size = Vector2(200, 20)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 204.0
+offset_bottom = 81.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+alignment = 2
+
+[node name="level1" type="Label" parent="CanvasLayer/MarginContainer3/PopupPanel/VBoxContainer"]
+layout_mode = 2
+text = "Level 1"
+
+[node name="level2" type="Label" parent="CanvasLayer/MarginContainer3/PopupPanel/VBoxContainer"]
+layout_mode = 2
+text = "Level 2"
+
+[node name="level3" type="Label" parent="CanvasLayer/MarginContainer3/PopupPanel/VBoxContainer"]
+layout_mode = 2
+text = "Level 3"
+
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
 clip_contents = true
 anchors_preset = 5
@@ -38,6 +88,26 @@ grow_horizontal = 2
 position = Vector2(252, 101)
 scale = Vector2(0.598837, 0.588889)
 texture = ExtResource("2_1t76i")
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer"]
+clip_contents = true
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -56.0
+offset_top = -153.0
+offset_right = 57.0
+offset_bottom = -122.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+
+[node name="BestScore" type="Button" parent="CanvasLayer/MarginContainer2"]
+layout_mode = 2
+text = "Best score
+"
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]
 position = Vector2(-1, -4)
