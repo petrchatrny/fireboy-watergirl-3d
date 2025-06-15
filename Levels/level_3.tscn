@@ -1,20 +1,23 @@
-[gd_scene load_steps=12 format=3 uid="uid://cdn0wvfr7ilhw"]
+[gd_scene load_steps=14 format=3 uid="uid://cdn0wvfr7ilhw"]
 
 [ext_resource type="PackedScene" uid="uid://4j08f75jksn7" path="res://Levels/base_level.tscn" id="1_cb8d3"]
 [ext_resource type="MeshLibrary" uid="uid://c813du6ewh6lj" path="res://Scenes/mesh_library.tres" id="2_5lru4"]
 [ext_resource type="PackedScene" uid="uid://bnf8ek5288hyi" path="res://Scenes/Environment/fire_diamond.tscn" id="2_ay5qi"]
+[ext_resource type="Script" uid="uid://c3488i0s1lgej" path="res://Levels/level_3.gd" id="2_oojpf"]
+[ext_resource type="AudioStream" uid="uid://brnn0jpvch257" path="res://Assets/Audio/ambient_music.ogg" id="3_7cdb2"]
 [ext_resource type="PackedScene" uid="uid://bu2d2ymp8mdx7" path="res://Scenes/Environment/magma.tscn" id="3_absw3"]
 [ext_resource type="PackedScene" uid="uid://tcv1x6gfbx4l" path="res://Scenes/Environment/water_diamond.tscn" id="3_fa81k"]
 [ext_resource type="PackedScene" uid="uid://blsb4oj0d0svv" path="res://Scenes/Environment/water.tscn" id="4_padch"]
-[ext_resource type="Script" path="res://Scenes/Environment/finish_door.gd" id="4_trpa2"]
+[ext_resource type="Script" uid="uid://540g8xbijprm" path="res://Scenes/Environment/finish_door.gd" id="4_trpa2"]
 [ext_resource type="PackedScene" uid="uid://1jp3bsjtant5" path="res://Scenes/Environment/fireboy_finish_door.tscn" id="5_4t7ew"]
 [ext_resource type="PackedScene" uid="uid://x710s8hwygrm" path="res://Scenes/Environment/acid.tscn" id="5_padch"]
 [ext_resource type="PackedScene" uid="uid://6d4po25kgf1q" path="res://Scenes/Environment/watergirl_finish_door.tscn" id="6_oojpf"]
 [ext_resource type="PackedScene" uid="uid://skgs00m22e02" path="res://Scenes/Environment/torch.tscn" id="11_4t7ew"]
 
-[node name="level_3" instance=ExtResource("1_cb8d3")]
+[node name="Level3" instance=ExtResource("1_cb8d3")]
 physics_interpolation_mode = 2
-script = null
+script = ExtResource("2_oojpf")
+background_music = ExtResource("3_7cdb2")
 
 [node name="Watergirl" parent="SplitScreen/LeftScreen/SubViewport" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5875, 0.450569, -8.48297)

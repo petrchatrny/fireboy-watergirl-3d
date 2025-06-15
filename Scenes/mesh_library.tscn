@@ -38,6 +38,7 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ok5d6"]
 resource_name = "texture"
+cull_mode = 2
 albedo_texture = ExtResource("1_roqii")
 roughness = 0.45
 
@@ -198,6 +199,7 @@ data = PackedVector3Array(-1.5757, 0.05, 1, -1, 0.05, 0.4243, -0.4243, 0.05, 1, 
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fjk6u"]
 resource_name = "texture"
+cull_mode = 2
 albedo_texture = ExtResource("5_sl40c")
 roughness = 0.45
 
