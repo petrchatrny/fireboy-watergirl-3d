@@ -28,9 +28,14 @@ func fill_levels() -> void:
 			)
 
 func show_best_scores():
-	# Vymazání starých dětí
+	# Vymazání starých položek
 	for child in best_score_list.get_children():
 		child.queue_free()
+
+	# Nadpis pro výpis nejlepších výsledků
+	var header := Label.new()
+	header.text = "	Best level results: "
+	best_score_list.add_child(header)
 
 	var results := load_best_scores()
 
@@ -51,13 +56,14 @@ func show_best_scores():
 		var label := Label.new()
 		label.text = "%s\t– %d/%d diamantů – %ds" % [
 			level.capitalize(),
-			result.get("diamonds_collected", 0),
-			result.get("diamonds_total", 0),
+			result.get("	diamonds_collected", 0),
+			result.get("	diamonds_total", 0),
 			result.get("seconds", 0)
 		]
 		best_score_list.add_child(label)
 
 	best_score_popup.popup_centered()
+
 
 func load_best_scores() -> Dictionary:
 	if not FileAccess.file_exists(results_file_path):
