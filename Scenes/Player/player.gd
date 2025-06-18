@@ -67,6 +67,12 @@ func _ready() -> void:
 
 # vyhodnocování fyziky v čase
 func _physics_process(delta: float) -> void:
+	# pokud je hráč mrtvý, ořehraje se animace smrti, ale zbytek pohybů je zakázán
+	if is_dead:
+		$AnimationTree.set("parameters/conditions/dead", true)  # přehraj animaci smrti
+		velocity = Vector3.ZERO  # zastav pohyb
+		return
+
 	# přidání gravitace
 	if not is_grounded():
 		velocity += get_gravity() * delta
@@ -117,6 +123,9 @@ func _physics_process(delta: float) -> void:
 
 # zachytávání vstupů na periferiích
 func _input(event: InputEvent) -> void:
+	# pokud je hráč mrtvý, ignorovat vstupy
+	if is_dead:
+		return
 	# pohyb myší - pohyb s kamerou
 	if use_mouse and event is InputEventMouseMotion:
 		yaw -= event.relative.x * sensitivity

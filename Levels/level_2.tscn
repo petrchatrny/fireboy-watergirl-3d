@@ -11,13 +11,22 @@
 [ext_resource type="PackedScene" uid="uid://bl6pvp3doisa2" path="res://Scenes/Environment/pressure_plate.tscn" id="5_pml6m"]
 [ext_resource type="PackedScene" uid="uid://1jp3bsjtant5" path="res://Scenes/Environment/fireboy_finish_door.tscn" id="9_qeqk5"]
 [ext_resource type="PackedScene" uid="uid://6d4po25kgf1q" path="res://Scenes/Environment/watergirl_finish_door.tscn" id="10_1soli"]
-[ext_resource type="PackedScene" uid="uid://7tuthrgr3twg" path="res://Scenes/Environment/lockable_door.tscn" id="12_1soli"]
+[ext_resource type="PackedScene" uid="uid://dkr4lb67vrv45" path="res://Scenes/Environment/lockable_door.tscn" id="12_1soli"]
 
 [node name="Level2" instance=ExtResource("1_ll1bl")]
 background_music = ExtResource("2_vltsr")
 
+[node name="SplitScreen" parent="." index="1"]
+anchors_preset = 15
+
+[node name="SubViewport" parent="SplitScreen/LeftScreen" index="0"]
+size = Vector2i(960, 1080)
+
 [node name="Watergirl" parent="SplitScreen/LeftScreen/SubViewport" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.68981)
+
+[node name="SubViewport" parent="SplitScreen/RightScreen" index="0"]
+size = Vector2i(960, 1080)
 
 [node name="Fireboy" parent="SplitScreen/RightScreen/SubViewport" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.237846, 0, -6)
@@ -313,8 +322,8 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -88.60
 [node name="WatergirlFinishDoor" parent="Scene/FinishDoors" index="1" instance=ExtResource("10_1soli")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -88.5843, -11.1075, -3.80764)
 
-[node name="LockableDoorWall" parent="Scene" index="4" instance=ExtResource("12_1soli")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.37621, -11.1487, -3.99775)
+[node name="PressurePlate" parent="Scene" index="4" instance=ExtResource("5_pml6m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.0713, -10.9556, 6.33802)
 
-[node name="PressurePlate" parent="Scene/LockableDoorWall" index="3" instance=ExtResource("5_pml6m")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.99775, 0.148705, 9.62379)
+[node name="LockableDoorWall2" parent="Scene" index="5" instance=ExtResource("12_1soli")]
+transform = Transform3D(0.00755724, 0, -0.999971, 0, 1, 0, 0.999971, 0, 0.00755724, -6.38239, -11.1532, -4.02131)

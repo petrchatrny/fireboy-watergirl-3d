@@ -36,9 +36,9 @@ anchor_top = 0.521
 anchor_right = 0.5
 anchor_bottom = 0.521
 offset_left = -150.0
-offset_top = -102.12
+offset_top = -7.68005
 offset_right = 150.0
-offset_bottom = 79.88
+offset_bottom = 218.32
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 6
@@ -52,7 +52,6 @@ title = "Best Results"
 initial_position = 3
 size = Vector2i(250, 108)
 current_screen = 0
-visible = true
 min_size = Vector2i(250, 80)
 max_size = Vector2i(250, 120)
 theme = SubResource("Theme_2stg7")
@@ -63,10 +62,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -121.0
-offset_top = -50.0
-offset_right = 121.0
-offset_bottom = 50.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 246.0
+offset_bottom = 104.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0588235, 0.0588235, 0.0588235, 1)
@@ -79,10 +78,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -121.0
-offset_top = -50.0
-offset_right = 121.0
-offset_bottom = 50.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 246.0
+offset_bottom = 104.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -146,8 +145,8 @@ text = "Best score
 position = Vector2(-1, -4)
 
 [node name="Sprite2D2" type="Sprite2D" parent="ParallaxLayer"]
-position = Vector2(534, 285.5)
-scale = Vector2(12.1778, 6.26471)
+position = Vector2(1166, 913)
+scale = Vector2(17.5822, 14.1333)
 texture = ExtResource("3_2stg7")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
@@ -168,22 +167,22 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Fireboy" type="Sprite2D" parent="."]
-position = Vector2(260, 299)
+position = Vector2(548, 486)
 scale = Vector2(0.672691, 0.622)
 texture = ExtResource("4_rikjy")
 
 [node name="Water" type="Sprite2D" parent="."]
-position = Vector2(806, 284)
+position = Vector2(1353, 457)
 scale = Vector2(0.664, 0.668675)
 texture = ExtResource("5_2stg7")
 
 [node name="Firecorner-removebg-preview" type="Sprite2D" parent="."]
-position = Vector2(814.75, 560.75)
-scale = Vector2(0.751788, 0.855742)
+position = Vector2(1511.44, 954)
+scale = Vector2(1.15147, 1.55672)
 texture = ExtResource("6_2stg7")
 
 [node name="Firecorner-removebg-preview2" type="Sprite2D" parent="."]
-position = Vector2(264, 563)
-scale = Vector2(0.751788, 0.855742)
+position = Vector2(384.812, 954)
+scale = Vector2(1.09639, 1.54552)
 texture = ExtResource("6_2stg7")
 flip_h = true

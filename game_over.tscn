@@ -24,8 +24,8 @@ script = ExtResource("1_ccer4")
 position = Vector2(-1, -4)
 
 [node name="Sprite2D2" type="Sprite2D" parent="ParallaxLayer"]
-position = Vector2(531, 372)
-scale = Vector2(15.2444, 8.98667)
+position = Vector2(962.5, 376)
+scale = Vector2(23.7822, 15.7511)
 texture = ExtResource("3_ccer4")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -83,11 +83,11 @@ text_overrun_behavior = 2
 clip_text = true
 
 [node name="Fireboy" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(288, 392)
+position = Vector2(650, 537)
 scale = Vector2(0.648594, 0.576)
 texture = ExtResource("4_ftari")
 
 [node name="Water" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(803, 363)
+position = Vector2(1277, 502)
 scale = Vector2(0.654, 0.667671)
 texture = ExtResource("5_28vn7")
