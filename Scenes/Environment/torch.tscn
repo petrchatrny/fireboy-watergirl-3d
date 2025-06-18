@@ -80,7 +80,6 @@ particles_anim_loop = false
 material = SubResource("StandardMaterial3D_j3rjm")
 
 [node name="Torch" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0176761, 0)
 
 [node name="torch_mounted" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_o7o2w")
