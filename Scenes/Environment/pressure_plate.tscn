@@ -72,6 +72,7 @@ _data = {
 }
 
 [node name="PressurePlate" type="StaticBody3D"]
+collision_layer = 18
 script = ExtResource("1_gfcjq")
 
 [node name="Base" type="MeshInstance3D" parent="."]

@@ -9,3 +9,10 @@ func _handle_button_toggled(is_pressed: bool) -> void:
 		$Scene/LockableDoorWall2.open()
 	else:
 		$Scene/LockableDoorWall2.close()
+
+
+func _on_pressure_toggled(is_pressed: bool) -> void:
+	if is_pressed:
+		$Scene/Controls/LockableDoorWall.open()
+	else:
+		$Scene/Controls/LockableDoorWall.close()
