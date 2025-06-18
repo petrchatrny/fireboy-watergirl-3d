@@ -338,4 +338,4 @@ transform = Transform3D(0.00755724, 0, -0.999971, 0, 1, 0, 0.999971, 0, 0.007557
 [node name="PressurePlate" parent="Scene/Controls" index="1" instance=ExtResource("5_pml6m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.0713, -11.0847, 6.33802)
 
-[connection signal="pressure_plate_toggled" from="Scene/Controls/PressurePlate" to="." method="_on_pressure_toggled"]
+[connection signal="pressure_plate_toggled" from="Scene/Controls/PressurePlate" to="." method="_handle_button_toggled"]
