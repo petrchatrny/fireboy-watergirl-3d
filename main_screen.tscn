@@ -1,0 +1,116 @@
+[gd_scene load_steps=14 format=3 uid="uid://b1t426x4oh7dv"]
+
+[ext_resource type="Script" uid="uid://10vya463315w" path="res://main_screen.gd" id="1_sjiej"]
+[ext_resource type="Texture2D" uid="uid://54vmvfdl06lb" path="res://Assets/HUD/title.png" id="2_1t76i"]
+[ext_resource type="Texture2D" uid="uid://b51mlghvdx80p" path="res://Assets/HUD/dungeon_background.png" id="2_ud038"]
+[ext_resource type="Texture2D" uid="uid://djy8ga8kjdm1x" path="res://Assets/HUD/fireboy.png" id="4_rikjy"]
+[ext_resource type="Texture2D" uid="uid://yvkrnfhkctd2" path="res://Assets/HUD/water.png" id="5_2stg7"]
+[ext_resource type="Texture2D" uid="uid://bah0kxxejp8al" path="res://Assets/HUD/lava-gui.jpg" id="5_gri22"]
+[ext_resource type="FontFile" uid="uid://csv42tgj57qby" path="res://Assets/HUD/trajanpro-bold.otf" id="5_ud038"]
+[ext_resource type="Texture2D" uid="uid://drv8sscjbwaib" path="res://Assets/HUD/gui-water.jpg" id="7_ou52s"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ou52s"]
+texture = ExtResource("2_ud038")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gri22"]
+texture = ExtResource("5_gri22")
+region_rect = Rect2(6104, 1718, 3553, 462)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fd0x1"]
+texture = ExtResource("5_gri22")
+region_rect = Rect2(6137, 1025, 3497, 445)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ud038"]
+texture = ExtResource("5_gri22")
+region_rect = Rect2(6130, 336, 3523, 492)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vg7mb"]
+texture = ExtResource("7_ou52s")
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+region_rect = Rect2(6058, 317, 3664, 471)
+
+[node name="MainScreen" type="CenterContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sjiej")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(1950, 1200)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ou52s")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 164
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_1t76i")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 300
+alignment = 1
+
+[node name="Fireboy" type="TextureRect" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("4_rikjy")
+stretch_mode = 5
+
+[node name="Control" type="Control" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = -76.0
+offset_right = 175.0
+offset_bottom = 76.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="PlayButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("5_ud038")
+theme_override_font_sizes/font_size = 42
+theme_override_styles/hover = SubResource("StyleBoxTexture_gri22")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fd0x1")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ud038")
+text = "Play"
+
+[node name="ControlsButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("5_ud038")
+theme_override_font_sizes/font_size = 42
+theme_override_styles/normal = SubResource("StyleBoxTexture_vg7mb")
+text = "Controls"
+
+[node name="Watergirl" type="TextureRect" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("5_2stg7")
+stretch_mode = 5
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Control/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Control/VBoxContainer/ControlsButton" to="." method="_on_controls_button_pressed"]
