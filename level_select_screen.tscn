@@ -1,188 +1,78 @@
-[gd_scene load_steps=9 format=3 uid="uid://de2nf6t6qd4rx"]
+[gd_scene load_steps=4 format=3 uid="uid://trrtbdcolivm"]
 
 [ext_resource type="Script" uid="uid://dlai8c2xxai3g" path="res://level_select_screen.gd" id="1_oumdo"]
-[ext_resource type="Texture2D" uid="uid://ow7mswmofj32" path="res://Assets/HUD/Title.webp" id="2_1t76i"]
-[ext_resource type="Texture2D" uid="uid://4f2dbynekgdp" path="res://Assets/HUD/black.png" id="3_2stg7"]
-[ext_resource type="Texture2D" uid="uid://djy8ga8kjdm1x" path="res://Assets/HUD/fireboy.png" id="4_rikjy"]
-[ext_resource type="Texture2D" uid="uid://yvkrnfhkctd2" path="res://Assets/HUD/water.png" id="5_2stg7"]
-[ext_resource type="Texture2D" uid="uid://3yoppvkdns26" path="res://Assets/HUD/firecorner-removebg-preview.png" id="6_2stg7"]
+[ext_resource type="FontFile" uid="uid://csv42tgj57qby" path="res://Assets/HUD/trajanpro-bold.otf" id="2_a4x7i"]
+[ext_resource type="Texture2D" uid="uid://b51mlghvdx80p" path="res://Assets/HUD/dungeon_background.png" id="2_rikjy"]
 
-[sub_resource type="Theme" id="Theme_kvsu1"]
-
-[sub_resource type="Theme" id="Theme_2stg7"]
-default_font_size = 16
-
-[node name="LevelSelectScreen" type="CenterContainer"]
+[node name="LevelSelectScreen" type="Control"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1.0
-offset_top = 4.0
-offset_right = 1.0
-offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_kvsu1")
 script = ExtResource("1_oumdo")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+position = Vector2(-960, -540)
 
-[node name="MarginContainer3" type="MarginContainer" parent="CanvasLayer"]
-clip_contents = true
-custom_minimum_size = Vector2(300, 100)
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.521
-anchor_right = 0.5
-anchor_bottom = 0.521
-offset_left = -150.0
-offset_top = -7.68005
-offset_right = 150.0
-offset_bottom = 218.32
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 6
-size_flags_vertical = 8
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_right = 8
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(1930.5, 1189.5)
+scale = Vector2(1.27279, 1.28223)
+texture = ExtResource("2_rikjy")
 
-[node name="PopupPanel" type="PopupPanel" parent="CanvasLayer/MarginContainer3"]
-mode = 3
-title = "Best Results"
-initial_position = 3
-size = Vector2i(250, 108)
-current_screen = 0
-min_size = Vector2i(250, 80)
-max_size = Vector2i(250, 120)
-theme = SubResource("Theme_2stg7")
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/MarginContainer3/PopupPanel"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 246.0
-offset_bottom = 104.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.0588235, 0.0588235, 0.0588235, 1)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer3/PopupPanel"]
-clip_contents = true
-custom_minimum_size = Vector2(200, 20)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 246.0
-offset_bottom = 104.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-alignment = 1
-
-[node name="level1" type="Label" parent="CanvasLayer/MarginContainer3/PopupPanel/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Level 1"
-horizontal_alignment = 1
-
-[node name="level2" type="Label" parent="CanvasLayer/MarginContainer3/PopupPanel/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Level 2"
-horizontal_alignment = 1
-
-[node name="level3" type="Label" parent="CanvasLayer/MarginContainer3/PopupPanel/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Level 3"
-horizontal_alignment = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
-clip_contents = true
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -250.0
-offset_right = 250.0
-offset_bottom = 200.0
 grow_horizontal = 2
 
-[node name="Title" type="Sprite2D" parent="CanvasLayer/MarginContainer"]
-position = Vector2(252, 101)
-scale = Vector2(0.598837, 0.588889)
-texture = ExtResource("2_1t76i")
-
-[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer"]
-clip_contents = true
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -56.0
-offset_top = -153.0
-offset_right = 57.0
-offset_bottom = -122.0
+offset_left = -1008.0
+offset_right = 1008.0
+offset_bottom = 620.0
 grow_horizontal = 2
-grow_vertical = 0
-size_flags_vertical = 8
+grow_vertical = 2
+alignment = 1
 
-[node name="BestScore" type="Button" parent="CanvasLayer/MarginContainer2"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(1920, 240)
 layout_mode = 2
-text = "Best score
-"
+size_flags_vertical = 4
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 128
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
-position = Vector2(-1, -4)
-
-[node name="Sprite2D2" type="Sprite2D" parent="ParallaxLayer"]
-position = Vector2(935, 586)
-scale = Vector2(17.5822, 14.1333)
-texture = ExtResource("3_2stg7")
-
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
-custom_minimum_size = Vector2(256, 320)
+[node name="Label" type="Label" parent="Panel/VBoxContainer/MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_a4x7i")
+theme_override_font_sizes/font_size = 95
+text = "Select level"
 
-[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(1920, 176)
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
+size_flags_vertical = 6
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_top = 128
+theme_override_constants/margin_right = 48
+theme_override_constants/margin_bottom = 48
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer"]
+[node name="GridContainer" type="GridContainer" parent="Panel/VBoxContainer/MarginContainer2"]
+custom_minimum_size = Vector2(1000, 200)
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Fireboy" type="Sprite2D" parent="."]
-position = Vector2(491, 486)
-scale = Vector2(0.672691, 0.622)
-texture = ExtResource("4_rikjy")
-
-[node name="Water" type="Sprite2D" parent="."]
-position = Vector2(1414, 457)
-scale = Vector2(0.664, 0.668675)
-texture = ExtResource("5_2stg7")
-
-[node name="Firecorner-removebg-preview" type="Sprite2D" parent="."]
-position = Vector2(1535.94, 1004.44)
-scale = Vector2(1.08137, 1.27416)
-texture = ExtResource("6_2stg7")
-
-[node name="Firecorner-removebg-preview2" type="Sprite2D" parent="."]
-position = Vector2(380.812, 1003.44)
-scale = Vector2(1.08494, 1.26856)
-texture = ExtResource("6_2stg7")
-flip_h = true
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 90
+theme_override_constants/v_separation = 90
+columns = 7

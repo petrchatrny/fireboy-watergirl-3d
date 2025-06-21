@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcktm1mr85lee"]
+
+[ext_resource type="FontFile" uid="uid://csv42tgj57qby" path="res://Assets/HUD/trajanpro-bold.otf" id="1_1w1xh"]
+[ext_resource type="StyleBox" path="res://Assets/HUD/level_button.tres" id="2_ppphp"]
+
+[node name="Button" type="Button"]
+custom_minimum_size = Vector2(195, 275)
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_1w1xh")
+theme_override_font_sizes/font_size = 128
+theme_override_styles/hover = ExtResource("2_ppphp")
+theme_override_styles/pressed = ExtResource("2_ppphp")
+theme_override_styles/normal = ExtResource("2_ppphp")
+text = "1"
