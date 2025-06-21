@@ -83,7 +83,7 @@ func _on_finish_door_toggled(is_open: bool, door: Node3D) -> void:
 		music_player.stream.loop = false
 		music_player.play()
 		
-		show_game_over_screen()
+		show_win_screen()
 
 
 # ------------------------------------------------------------------------------
@@ -175,6 +175,16 @@ func show_game_over_screen() -> void:
 
 	# Umístíme doprostřed obrazovky
 	game_over_scene.position = get_viewport().get_visible_rect().size / 2
+
+func show_win_screen() -> void:
+	var win_scene = load("res://you_won.tscn").instantiate() as Control
+	
+	# Přidáme ji přímo do aktuální scény (např. jako overlay přes HUD)
+	get_tree().current_scene.add_child(win_scene)
+
+	# Umístíme doprostřed obrazovky
+	win_scene.position = get_viewport().get_visible_rect().size / 2
+
 
 func play_music_in_loop():
 	if background_music:

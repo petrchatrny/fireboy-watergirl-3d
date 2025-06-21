@@ -145,7 +145,7 @@ text = "Best score
 position = Vector2(-1, -4)
 
 [node name="Sprite2D2" type="Sprite2D" parent="ParallaxLayer"]
-position = Vector2(1166, 913)
+position = Vector2(935, 586)
 scale = Vector2(17.5822, 14.1333)
 texture = ExtResource("3_2stg7")
 
@@ -167,22 +167,22 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Fireboy" type="Sprite2D" parent="."]
-position = Vector2(548, 486)
+position = Vector2(491, 486)
 scale = Vector2(0.672691, 0.622)
 texture = ExtResource("4_rikjy")
 
 [node name="Water" type="Sprite2D" parent="."]
-position = Vector2(1353, 457)
+position = Vector2(1414, 457)
 scale = Vector2(0.664, 0.668675)
 texture = ExtResource("5_2stg7")
 
 [node name="Firecorner-removebg-preview" type="Sprite2D" parent="."]
-position = Vector2(1511.44, 954)
-scale = Vector2(1.15147, 1.55672)
+position = Vector2(1535.94, 1004.44)
+scale = Vector2(1.08137, 1.27416)
 texture = ExtResource("6_2stg7")
 
 [node name="Firecorner-removebg-preview2" type="Sprite2D" parent="."]
-position = Vector2(384.812, 954)
-scale = Vector2(1.09639, 1.54552)
+position = Vector2(380.812, 1003.44)
+scale = Vector2(1.08494, 1.26856)
 texture = ExtResource("6_2stg7")
 flip_h = true
