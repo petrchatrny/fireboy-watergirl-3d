@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Fireboy and Watergirl 3D"
-run/main_scene="uid://de2nf6t6qd4rx"
+run/main_scene="uid://b1t426x4oh7dv"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 

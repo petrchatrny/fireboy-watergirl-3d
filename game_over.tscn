@@ -1,17 +1,38 @@
-[gd_scene load_steps=7 format=3 uid="uid://c6jc8p8ndra8i"]
+[gd_scene load_steps=12 format=3 uid="uid://c6jc8p8ndra8i"]
 
 [ext_resource type="Script" uid="uid://bgehx7qupko1g" path="res://game_over.gd" id="1_ccer4"]
 [ext_resource type="Texture2D" uid="uid://bo5r37epetumm" path="res://Assets/HUD/gameover-removebg-preview.png" id="2_8u835"]
-[ext_resource type="Texture2D" uid="uid://4f2dbynekgdp" path="res://Assets/HUD/black.png" id="3_ccer4"]
-[ext_resource type="Texture2D" uid="uid://djy8ga8kjdm1x" path="res://Assets/HUD/fireboy.png" id="4_ftari"]
-[ext_resource type="Texture2D" uid="uid://yvkrnfhkctd2" path="res://Assets/HUD/water.png" id="5_28vn7"]
+[ext_resource type="Texture2D" uid="uid://b51mlghvdx80p" path="res://Assets/HUD/dungeon_background.png" id="2_fkf4o"]
+[ext_resource type="FontFile" uid="uid://csv42tgj57qby" path="res://Assets/HUD/trajanpro-bold.otf" id="4_k2vha"]
+[ext_resource type="Texture2D" uid="uid://bah0kxxejp8al" path="res://Assets/HUD/lava-gui.jpg" id="7_fkf4o"]
+[ext_resource type="Texture2D" uid="uid://drv8sscjbwaib" path="res://Assets/HUD/gui-water.jpg" id="8_3u7xm"]
 
 [sub_resource type="Theme" id="Theme_kvsu1"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_woa3c"]
+texture = ExtResource("7_fkf4o")
+region_rect = Rect2(6104, 1718, 3553, 462)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dd2jf"]
+texture = ExtResource("7_fkf4o")
+region_rect = Rect2(6137, 1025, 3497, 445)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ku74v"]
+texture = ExtResource("7_fkf4o")
+region_rect = Rect2(6130, 336, 3523, 492)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nm4t2"]
+texture = ExtResource("8_3u7xm")
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+region_rect = Rect2(6058, 317, 3664, 471)
 
 [node name="GameOver" type="CenterContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -37.0
+offset_top = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -20,74 +41,60 @@ theme = SubResource("Theme_kvsu1")
 use_top_left = true
 script = ExtResource("1_ccer4")
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
-position = Vector2(-1, -4)
-
-[node name="Sprite2D2" type="Sprite2D" parent="ParallaxLayer"]
-position = Vector2(962.5, 376)
-scale = Vector2(23.7822, 15.7511)
-texture = ExtResource("3_ccer4")
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
-clip_contents = true
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -250.0
-offset_right = 244.0
-offset_bottom = 241.0
-grow_horizontal = 2
+[node name="ParallaxLayer" type="ParallaxLayer" parent="CanvasLayer"]
+position = Vector2(-38, -8)
 
-[node name="Gameover-removebg-preview" type="Sprite2D" parent="CanvasLayer/MarginContainer"]
-position = Vector2(260.75, 110.5)
-scale = Vector2(0.750822, 0.640351)
-texture = ExtResource("2_8u835")
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ParallaxLayer"]
+position = Vector2(997.5, 662)
+scale = Vector2(1.29883, 1.42383)
+texture = ExtResource("2_fkf4o")
 
-[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer"]
-custom_minimum_size = Vector2(200, 200)
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -98.0
-offset_top = -109.0
-offset_right = 102.0
-offset_bottom = 91.0
+offset_left = -200.0
+offset_top = -266.0
+offset_right = 200.0
+offset_bottom = 266.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 6
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 164
 alignment = 1
 
-[node name="Button" type="Button" parent="CanvasLayer/MarginContainer2/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 250)
 layout_mode = 2
+texture = ExtResource("2_8u835")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="PlayAgainButton" type="Button" parent="CanvasLayer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("4_k2vha")
+theme_override_font_sizes/font_size = 42
+theme_override_styles/hover = SubResource("StyleBoxTexture_woa3c")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_dd2jf")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ku74v")
 text = "Play again"
-text_overrun_behavior = 2
-clip_text = true
 
-[node name="Button2" type="Button" parent="CanvasLayer/MarginContainer2/VBoxContainer"]
+[node name="SelectLevelButton" type="Button" parent="CanvasLayer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("4_k2vha")
+theme_override_font_sizes/font_size = 42
+theme_override_styles/normal = SubResource("StyleBoxTexture_nm4t2")
 text = "Main menu"
-text_overrun_behavior = 2
-clip_text = true
-
-[node name="Fireboy" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(650, 537)
-scale = Vector2(0.648594, 0.576)
-texture = ExtResource("4_ftari")
-
-[node name="Water" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(1277, 502)
-scale = Vector2(0.654, 0.667671)
-texture = ExtResource("5_28vn7")
