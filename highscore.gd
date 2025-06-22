@@ -29,7 +29,7 @@ func display_best_scores():
 
 	if results.is_empty():
 		var label := Label.new()
-		label.text = "Žádné uložené výsledky."
+		label.text = "No saved results"
 		label.add_font_override("font", font) 
 		label.set("custom_fonts/font", font)  
 		label.modulate = Color(0, 0, 0)
@@ -46,7 +46,7 @@ func display_best_scores():
 			continue
 
 		var label := Label.new()
-		label.text = "%s – %d/%d diamantů – %ds" % [
+		label.text = "%s – %d/%d diamonds – %ds" % [
 			level.capitalize(),
 			result.get("diamonds_collected", 0),
 			result.get("diamonds_total", 0),

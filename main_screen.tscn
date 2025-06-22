@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b1t426x4oh7dv"]
+[gd_scene load_steps=16 format=3 uid="uid://b1t426x4oh7dv"]
 
 [ext_resource type="Script" uid="uid://10vya463315w" path="res://main_screen.gd" id="1_sjiej"]
 [ext_resource type="Texture2D" uid="uid://54vmvfdl06lb" path="res://Assets/HUD/title.png" id="2_1t76i"]
@@ -23,6 +23,14 @@ region_rect = Rect2(6137, 1025, 3497, 445)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ud038"]
 texture = ExtResource("5_gri22")
 region_rect = Rect2(6130, 336, 3523, 492)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sjiej"]
+texture = ExtResource("7_ou52s")
+region_rect = Rect2(6058, 1015, 3664, 471)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4sv2p"]
+texture = ExtResource("7_ou52s")
+region_rect = Rect2(6058, 1711, 3664, 471)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vg7mb"]
 texture = ExtResource("7_ou52s")
@@ -103,8 +111,10 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("5_ud038")
 theme_override_font_sizes/font_size = 42
+theme_override_styles/hover = SubResource("StyleBoxTexture_sjiej")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_4sv2p")
 theme_override_styles/normal = SubResource("StyleBoxTexture_vg7mb")
-text = "Controls"
+text = "HIGHSCORE"
 
 [node name="Watergirl" type="TextureRect" parent="PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2

@@ -124,5 +124,5 @@ text = "Main menu"
 
 [node name="Hugging" type="Sprite2D" parent="CanvasLayer"]
 position = Vector2(965, 831)
-scale = Vector2(0.206299, 0.194336)
+scale = Vector2(0.461073, 0.434336)
 texture = ExtResource("4_jvc3m")

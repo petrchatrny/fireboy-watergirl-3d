@@ -1,20 +1,20 @@
 [gd_scene load_steps=6 format=3 uid="uid://cosbvchws36pm"]
 
-[ext_resource type="Script" uid="uid://cva7idpx8y2ef" path="res://controls.gd" id="1_ff64o"]
+[ext_resource type="Script" uid="uid://cva7idpx8y2ef" path="res://highscore.gd" id="1_3l0qk"]
 [ext_resource type="Texture2D" uid="uid://b51mlghvdx80p" path="res://Assets/HUD/dungeon_background.png" id="2_ff64o"]
 [ext_resource type="FontFile" uid="uid://csv42tgj57qby" path="res://Assets/HUD/trajanpro-bold.otf" id="3_kxvun"]
 [ext_resource type="Texture2D" uid="uid://dfk8neyn01l2q" path="res://Assets/HUD/level.svg" id="4_ff64o"]
 
 [sub_resource type="Theme" id="Theme_kxvun"]
 
-[node name="Controls" type="Control"]
+[node name="Highscore" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ff64o")
+script = ExtResource("1_3l0qk")
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]
 position = Vector2(-960, -540)
@@ -60,7 +60,7 @@ theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_kxvun")
 theme_override_font_sizes/font_size = 95
-text = "Best score"
+text = "HIGHSCORE"
 
 [node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer"]
 custom_minimum_size = Vector2(700, 700)
