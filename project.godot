@@ -13,7 +13,13 @@ config_version=5
 config/name="Fireboy and Watergirl (3D)"
 run/main_scene="uid://b1t426x4oh7dv"
 config/features=PackedStringArray("4.4", "Forward Plus")
+boot_splash/bg_color=Color(0.0214346, 0.0214346, 0.0214346, 1)
+boot_splash/fullsize=false
+boot_splash/image="uid://54vmvfdl06lb"
 config/icon="res://icon.svg"
+config/macos_native_icon="res://icon.icns"
+config/windows_native_icon="res://icon.ico"
+boot_splash/minimum_display_time=10
 
 [audio]
 
@@ -29,6 +35,7 @@ window/size/mode=3
 
 folder_colors={
 "res://Assets/": "orange",
+"res://Export/": "gray",
 "res://Levels/": "blue",
 "res://Scenes/": "green",
 "res://Screens/": "yellow"
@@ -107,3 +114,7 @@ fb_jump={
 3d_physics/layer_3="Liquid"
 3d_physics/layer_4="Collectible"
 3d_physics/layer_5="Climbable"
+
+[rendering]
+
+textures/vram_compression/import_etc2_astc=true

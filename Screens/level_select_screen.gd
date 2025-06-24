@@ -2,7 +2,7 @@ extends Control
 
 var LevelButton := preload("res://Scenes/GUI/level_button.tscn")
 
-const level_folder_path := "res://levels/"
+const level_folder_path := "res://Levels/"
 
 # Ručně spravovaný seznam levelů:
 const LEVELS := [
