@@ -1,7 +1,0 @@
-[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://sulj62tquyar"]
-
-[ext_resource type="Texture2D" uid="uid://dfk8neyn01l2q" path="res://Assets/HUD/level.svg" id="1_xyrc3"]
-
-[resource]
-texture = ExtResource("1_xyrc3")
-region_rect = Rect2(24, 26, 92, 116)

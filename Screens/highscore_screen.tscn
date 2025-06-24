@@ -1,0 +1,114 @@
+[gd_scene load_steps=5 format=3 uid="uid://cosbvchws36pm"]
+
+[ext_resource type="Script" uid="uid://cva7idpx8y2ef" path="res://Screens/highscore_screen.gd" id="1_3l0qk"]
+[ext_resource type="Texture2D" uid="uid://b51mlghvdx80p" path="res://Assets/HUD/dungeon_background.png" id="2_ff64o"]
+[ext_resource type="FontFile" uid="uid://csv42tgj57qby" path="res://Assets/HUD/trajanpro-bold.otf" id="3_kxvun"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p3kvy"]
+texture = ExtResource("2_ff64o")
+
+[node name="HighscoreScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3l0qk")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_p3kvy")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1920, 240)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 128
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_kxvun")
+theme_override_font_sizes/font_size = 95
+text = "HIGHSCORE"
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
+z_index = -4
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 256
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 256
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Row" type="HBoxContainer" parent="PanelContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+z_index = 4
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="1" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Row"]
+y_sort_enabled = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_kxvun")
+text = "Level"
+
+[node name="2" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Row"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_kxvun")
+text = "Diamonds"
+
+[node name="3" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Row"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_kxvun")
+text = "Duration"
+
+[node name="4" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Row"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_kxvun")
+text = "Achieved"
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 128.0
+offset_top = -120.0
+offset_right = 228.0
+offset_bottom = -77.0
+grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("3_kxvun")
+theme_override_font_sizes/font_size = 34
+text = "Back"
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

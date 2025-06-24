@@ -12,6 +12,8 @@ var current_level_name: String = ""
 
 @onready var watergirl = $SplitScreen/LeftScreen/SubViewport/Watergirl
 @onready var fireboy = $SplitScreen/RightScreen/SubViewport/Fireboy
+@onready var time_label = $"HUD/MarginContainer/TimerMesh/TimeLabel"
+@onready var diamond_label = $"HUD/MarginContainer2/TimerMesh/DiamondCountLabel"
 @onready var music_player := $MusicPlayer
 
 func _on_ready() -> void:
@@ -29,19 +31,16 @@ func _on_ready() -> void:
 	
 	# uložení výchozího počtu diamantů do proměnné
 	total_diamonds_count = get_total_diamonds_count()
+	
+	# uložení názvu levelu
 	current_level_name = get_tree().current_scene.scene_file_path.get_file().get_basename()
 
 	# nastavení správného výchozího skóre
 	update_score()
 	
+	# připojení signálů z 
 	watergirl.player_died.connect(on_player_died)
 	fireboy.player_died.connect(on_player_died)
-
-
-#func _unhandled_input(event: InputEvent) -> void:
-	#if event is InputEventMouseMotion:
-		## Předpoklad: pravý hráč má myš, jinak přesměruj na levý
-		#$SplitScreen/RightScreen/SubViewport.input(event)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if is_game_over:
@@ -59,7 +58,7 @@ func _on_timer_timeout() -> void:
 	# vizuální vykreslení změny času
 	var minutes = int(passed_seconds_count / 60)
 	var seconds = int(passed_seconds_count % 60)
-	$HUD/TimerRect/TimeLabel.text = "%02d:%02d" % [minutes, seconds]
+	time_label.text = "%02d:%02d" % [minutes, seconds]
 
 func _on_diamond_collected():
 	collected_diamonds_count += 1
@@ -70,20 +69,27 @@ func _on_finish_door_toggled(is_open: bool, door: Node3D) -> void:
 		is_fireboy_finish_door_open = is_open
 	elif door.accepted_player_type == "watergirl":
 		is_watergirl_finish_door_open = is_open
-	
-	if is_fireboy_finish_door_open and is_watergirl_finish_door_open:
-		is_game_over = true
 
-		# Uložení pouze při výhře
+	if is_fireboy_finish_door_open and is_watergirl_finish_door_open:
+		# vyčkat než se přehraje animace otevírání dveří
+		is_game_over = true
+		await get_tree().create_timer(1.5).timeout
+
+		# uložení skóre
 		save_game_result_to_file()
-		
+
 		# přehrát zvuk výhry
 		music_player.stop()
 		music_player.stream = load("res://Assets/Audio/game_won.ogg")
 		music_player.stream.loop = false
 		music_player.play()
-		
-		show_win_screen()
+
+		# přepnout na obrazovku výhry
+		show_screen("res://Screens/you_won_screen.tscn")
+
+		# smazat hráče
+		watergirl.queue_free()
+		fireboy.queue_free()
 
 
 # ------------------------------------------------------------------------------
@@ -144,7 +150,7 @@ func connect_finish_doors_signals():
 # aktualizuje text skóre v HUD
 func update_score() -> void:
 	var text = str(collected_diamonds_count) + "/" + str(total_diamonds_count)
-	$HUD/ScoreRect/Control/DiamondCountLabel.text = text
+	diamond_label.text = text
 
 # získá počet diamantů
 func get_total_diamonds_count() -> int:
@@ -154,8 +160,10 @@ func get_total_diamonds_count() -> int:
 func on_player_died() -> void:
 	if is_game_over:
 		return
-		
-	# vyčkat než se přehraje anime umírání
+	
+	is_game_over = true
+	
+	# vyčkat než se přehraje animace umírání
 	await get_tree().create_timer(1.5).timeout
 
 	# přehrát zvuk prohry
@@ -164,27 +172,16 @@ func on_player_died() -> void:
 	music_player.stream.loop = false
 	music_player.play()
 
-	is_game_over = true
-	show_game_over_screen()
+	show_screen("res://Screens/game_over_screen.tscn")
 
-func show_game_over_screen() -> void:
-	var game_over_scene = load("res://game_over.tscn").instantiate() as Control
+func show_screen(path) -> void:
+	var game_over_scene = load(path).instantiate() as Control
 	
 	# Přidáme ji přímo do aktuální scény (např. jako overlay přes HUD)
 	get_tree().current_scene.add_child(game_over_scene)
 
 	# Umístíme doprostřed obrazovky
 	game_over_scene.position = get_viewport().get_visible_rect().size / 2
-
-func show_win_screen() -> void:
-	var win_scene = load("res://you_won.tscn").instantiate() as Control
-	
-	# Přidáme ji přímo do aktuální scény (např. jako overlay přes HUD)
-	get_tree().current_scene.add_child(win_scene)
-
-	# Umístíme doprostřed obrazovky
-	win_scene.position = get_viewport().get_visible_rect().size / 2
-
 
 func play_music_in_loop():
 	if background_music:

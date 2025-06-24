@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bcktm1mr85lee"]
 
 [ext_resource type="FontFile" uid="uid://csv42tgj57qby" path="res://Assets/HUD/trajanpro-bold.otf" id="1_1w1xh"]
-[ext_resource type="StyleBox" path="res://Assets/HUD/level_button.tres" id="2_ppphp"]
+[ext_resource type="StyleBox" uid="uid://sulj62tquyar" path="res://Assets/Material/level_button.tres" id="2_ppphp"]
 
 [node name="Button" type="Button"]
 custom_minimum_size = Vector2(195, 275)

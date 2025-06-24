@@ -1,0 +1,127 @@
+[gd_scene load_steps=14 format=3 uid="uid://c6jc8p8ndra8i"]
+
+[ext_resource type="Script" uid="uid://bgehx7qupko1g" path="res://Screens/game_over_screen.gd" id="1_kbciq"]
+[ext_resource type="Texture2D" uid="uid://b51mlghvdx80p" path="res://Assets/HUD/dungeon_background.png" id="2_np5fq"]
+[ext_resource type="Texture2D" uid="uid://bo5r37epetumm" path="res://Assets/HUD/gameover-removebg-preview.png" id="3_gy8en"]
+[ext_resource type="FontFile" uid="uid://csv42tgj57qby" path="res://Assets/HUD/trajanpro-bold.otf" id="4_pv6v5"]
+[ext_resource type="Texture2D" uid="uid://bah0kxxejp8al" path="res://Assets/HUD/gui-lava.jpg" id="5_58wtv"]
+[ext_resource type="Texture2D" uid="uid://drv8sscjbwaib" path="res://Assets/HUD/gui-water.jpg" id="6_2xsda"]
+
+[sub_resource type="Theme" id="Theme_kvsu1"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kbciq"]
+texture = ExtResource("5_58wtv")
+region_rect = Rect2(6104, 1718, 3553, 462)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_np5fq"]
+texture = ExtResource("5_58wtv")
+region_rect = Rect2(6137, 1025, 3497, 445)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gy8en"]
+texture = ExtResource("5_58wtv")
+region_rect = Rect2(6130, 336, 3523, 492)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pv6v5"]
+texture = ExtResource("6_2xsda")
+region_rect = Rect2(6058, 1015, 3664, 471)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_58wtv"]
+texture = ExtResource("6_2xsda")
+region_rect = Rect2(6058, 1711, 3664, 471)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2xsda"]
+texture = ExtResource("6_2xsda")
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+region_rect = Rect2(6058, 317, 3664, 471)
+
+[node name="GameOverScreen" type="CenterContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -37.0
+offset_top = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_kvsu1")
+use_top_left = true
+script = ExtResource("1_kbciq")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="CanvasLayer"]
+position = Vector2(-38, -8)
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ParallaxLayer"]
+position = Vector2(997.5, 662)
+scale = Vector2(1.29883, 1.42383)
+texture = ExtResource("2_np5fq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -266.0
+offset_right = 200.0
+offset_bottom = 266.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 164
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(600, 250)
+layout_mode = 2
+texture = ExtResource("3_gy8en")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="Control" type="Control" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = -76.0
+offset_right = 175.0
+offset_bottom = 76.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="PlayAgainButton" type="Button" parent="CanvasLayer/VBoxContainer/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("4_pv6v5")
+theme_override_font_sizes/font_size = 42
+theme_override_styles/hover = SubResource("StyleBoxTexture_kbciq")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_np5fq")
+theme_override_styles/normal = SubResource("StyleBoxTexture_gy8en")
+text = "Play again"
+
+[node name="MainMenuButton" type="Button" parent="CanvasLayer/VBoxContainer/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("4_pv6v5")
+theme_override_font_sizes/font_size = 42
+theme_override_styles/hover = SubResource("StyleBoxTexture_pv6v5")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_58wtv")
+theme_override_styles/normal = SubResource("StyleBoxTexture_2xsda")
+text = "Main menu"
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Control/VBoxContainer/PlayAgainButton" to="." method="restart_level"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Control/VBoxContainer/MainMenuButton" to="." method="open_level_select"]

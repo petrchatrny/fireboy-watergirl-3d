@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://d34m60pnlm072"]
+
+[ext_resource type="FontFile" uid="uid://dkvfjxcati2r2" path="res://Assets/HUD/trajanpro-regular.ttf" id="1_r5h7e"]
+
+[node name="MarginContainer" type="MarginContainer"]
+offset_left = 240.0
+offset_right = 240.0
+offset_bottom = 16.0
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ScoreTableRow" type="HBoxContainer" parent="."]
+z_index = 4
+layout_mode = 2
+
+[node name="1" type="Label" parent="ScoreTableRow"]
+y_sort_enabled = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_r5h7e")
+text = "Level"
+
+[node name="2" type="Label" parent="ScoreTableRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_r5h7e")
+text = "Diamonds"
+
+[node name="3" type="Label" parent="ScoreTableRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_r5h7e")
+text = "Time"
+
+[node name="4" type="Label" parent="ScoreTableRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_r5h7e")
+text = "Date"

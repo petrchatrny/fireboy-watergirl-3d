@@ -1,8 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://4j08f75jksn7"]
+[gd_scene load_steps=9 format=3 uid="uid://4j08f75jksn7"]
 
 [ext_resource type="Script" uid="uid://cq8nce30at8mp" path="res://Levels/base_level.gd" id="1_ujkqx"]
 [ext_resource type="PackedScene" uid="uid://kgtyn5vo7nbx" path="res://Scenes/Player/player.tscn" id="2_3vydx"]
-[ext_resource type="Texture2D" uid="uid://bcrbhcufavkk1" path="res://Assets/HUD/diamond_icon.png" id="3_n4mxg"]
+[ext_resource type="Texture2D" uid="uid://d3xsl4c3j3olo" path="res://Assets/HUD/timer.svg" id="2_ruyyf"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_n4mxg"]
+load_path = "res://.godot/imported/diamond-counter.svg-f463bbf0931cd487fe48df04a950b324.ctex"
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_n4mxg"]
 sky_top_color = Color(0.352941, 0.45098, 0.556863, 1)
@@ -36,95 +39,73 @@ script = ExtResource("1_ujkqx")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
-[node name="TimerRect" type="ColorRect" parent="HUD"]
+[node name="MarginContainer" type="MarginContainer" parent="HUD"]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -118.0
-offset_top = -60.0
-offset_right = -18.0
-offset_bottom = -16.0
+offset_left = -40.0
+offset_top = -40.0
 grow_horizontal = 0
 grow_vertical = 0
-size_flags_horizontal = 0
-color = Color(0.219501, 0.219501, 0.219501, 1)
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
 
-[node name="TimeLabel" type="Label" parent="HUD/TimerRect"]
+[node name="TimerMesh" type="TextureRect" parent="HUD/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("2_ruyyf")
+
+[node name="TimeLabel" type="Label" parent="HUD/MarginContainer/TimerMesh"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -41.5
-offset_top = -14.5
-offset_right = 41.5
-offset_bottom = 14.5
+offset_left = -16.0
+offset_top = -17.0
+offset_right = 67.0
+offset_bottom = 12.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "0:00"
+size_flags_horizontal = 4
+text = "00:00"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ScoreRect" type="ColorRect" parent="HUD"]
+[node name="MarginContainer2" type="MarginContainer" parent="HUD"]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 24.0
-offset_top = -58.0
-offset_right = 102.0
-offset_bottom = -19.0
+offset_top = -40.0
+offset_right = 40.0
 grow_vertical = 0
-size_flags_horizontal = 0
-size_flags_vertical = 4
-color = Color(0.219501, 0.219501, 0.219501, 1)
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_bottom = 12
 
-[node name="Control" type="Control" parent="HUD/ScoreRect"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -42.0
-offset_top = -23.0
-offset_right = 42.0
-offset_bottom = 23.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="TimerMesh" type="TextureRect" parent="HUD/MarginContainer2"]
+layout_mode = 2
+texture = SubResource("CompressedTexture2D_n4mxg")
 
-[node name="DiamondIcon" type="TextureRect" parent="HUD/ScoreRect/Control"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 11.0
-offset_top = -10.0
-offset_right = 31.0
-offset_bottom = 10.0
-grow_vertical = 2
-texture = ExtResource("3_n4mxg")
-expand_mode = 1
-
-[node name="DiamondCountLabel" type="Label" parent="HUD/ScoreRect/Control"]
+[node name="DiamondCountLabel" type="Label" parent="HUD/MarginContainer2/TimerMesh"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -35.0
-offset_top = -11.5
-offset_right = -10.0
-offset_bottom = 11.5
+offset_left = -59.0
+offset_top = -15.0
+offset_right = -34.0
+offset_bottom = 8.0
 grow_horizontal = 0
 grow_vertical = 2
 text = "0/0"
 
 [node name="SplitScreen" type="Control" parent="."]
 layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -142,7 +123,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="SplitScreen/LeftScreen"]
 handle_input_locally = false
 audio_listener_enable_3d = true
-size = Vector2i(540, 720)
+size = Vector2i(960, 1080)
 render_target_update_mode = 4
 
 [node name="Watergirl" parent="SplitScreen/LeftScreen/SubViewport" instance=ExtResource("2_3vydx")]
@@ -161,7 +142,7 @@ mouse_target = true
 [node name="SubViewport" type="SubViewport" parent="SplitScreen/RightScreen"]
 handle_input_locally = false
 audio_listener_enable_3d = true
-size = Vector2i(540, 720)
+size = Vector2i(960, 1080)
 render_target_update_mode = 4
 
 [node name="Fireboy" parent="SplitScreen/RightScreen/SubViewport" instance=ExtResource("2_3vydx")]
